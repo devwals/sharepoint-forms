@@ -1,0 +1,12 @@
+<div class="custom-control custom-checkbox" *ngFor="let option of to.options; let i = index;">
+  <input class="custom-control-input" type="checkbox"
+          [id]="id + '_' + i"
+          [value]="option.value"
+          [checked]="formControl.value && optionExists(option.value)"
+          [formlyAttributes]="field"
+          [disabled]="field.templateOptions.disabled || fieldOptions.disabled"
+          (change)="onChange(option.value, $event.target.checked)">
+  <label class="custom-control-label" [for]="id + '_' + i">
+    {{ option.label }} 
+  </label>
+</div>

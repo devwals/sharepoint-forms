@@ -1,0 +1,41 @@
+<div *ngIf="fieldOptions.properties.displayType == 'radio'">
+  <div class="custom-control custom-radio" *ngFor="let option of to.options; let i = index;">
+    <input class="custom-control-input" type="radio"
+      [name]="id"
+      [id]="id + '_' + i"
+      [class.is-invalid]="showError"
+      [attr.value]="option.value"
+      [value]="option.value"
+      [formControl]="formControl"
+      [formlyAttributes]="field"
+      [disabled]="field.templateOptions.disabled || fieldOptions.disabled"
+      >
+    <label class="custom-control-label" [for]="id + '_' + i">
+      {{ option.label }}
+    </label>
+  </div>
+</div>
+    
+<!-- Rectangular switch -->
+<div class="row switchContainer" 
+      *ngIf="fieldOptions.properties.displayType == 'switch rectangular'"
+>
+  <label class="switch">
+    <input type="checkbox" [formControl]="formControl" 
+            [formlyAttributes]="field" [class.is-invalid]="showError"
+    >
+    <span class="slider"></span>
+  </label>
+</div>
+
+<!-- Rounded switch -->
+<div class="row switchContainer" 
+      *ngIf="fieldOptions.properties.displayType == 'switch rounded'"
+>
+  <label class="switch">
+    <input type="checkbox" [formControl]="formControl" 
+            [formlyAttributes]="field" [class.is-invalid]="showError"
+    >
+    <span class="slider round"></span>
+  </label>
+</div>

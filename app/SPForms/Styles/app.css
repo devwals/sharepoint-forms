@@ -1,0 +1,50 @@
+﻿body{
+    overflow: auto !important;
+}
+#s4-ribbonrow, #suiteBarDelta, #s4-titlerow{
+    display:none!important;
+}
+#s4-workspace{
+    overflow: inherit;
+    height: auto!important;
+    width:auto!important;
+}
+
+#s4-bodyContainer {
+    padding-bottom: 0px;
+}
+
+#contentRow{
+    padding: 0;
+}
+
+.ms-fullscreenmode #contentBox,#contentBox{
+    margin-left: 0;
+    margin-right: 0;
+}
+
+
+@media (max-width: 741px){
+	.nb-theme-default nb-layout.with-scroll .scrollable-container {
+		//height: auto !important;
+		//overflow: hidden !important;
+		height: 188vh !important;
+	}
+}
+	
+
+
+.nb-theme-default input.custom-control-input[type='radio']:checked ~ .custom-control-label::after {
+  border: solid #40dc7e 0.35rem !important;
+}
+
+.nb-theme-default input.custom-control-input[type='radio']:checked ~ .custom-control-label::before {
+	border: 2px solid #dadfe6 !important;
+}
+
+button.q-remove-button {
+    padding: 0 0!important;
+    margin: 0 0;
+    min-width: 0;
+    border: 0!important;
+}

@@ -1,0 +1,3 @@
+C:\Bitbucket\spforms\app\SPForms\bin\Debug\nb.Intranet.pdb
+C:\Bitbucket\spforms\app\SPForms\obj\Debug\nb.Intranet.dll
+C:\Bitbucket\spforms\app\SPForms\obj\Debug\nb.Intranet.pdb

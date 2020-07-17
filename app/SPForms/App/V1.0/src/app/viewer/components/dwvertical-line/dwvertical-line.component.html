@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="vr" [ngStyle]="{
+                              'background-color' : model.properties.color, 
+                              'height' : model.properties.heightUnit === 'px' ? model.properties.height + 'px' : model.properties.height + '%',
+                              'width' : model.properties.widthUnit === 'px' ? model.properties.width + 'px' : model.properties.width + '%',
+                              'left': model.properties.align
+                            }"
+  >
+    &nbsp;
+  </div>
+</div>

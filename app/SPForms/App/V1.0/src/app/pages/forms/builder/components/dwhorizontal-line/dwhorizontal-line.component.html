@@ -1,0 +1,24 @@
+<div class="shadow">
+  <div class="row">
+    <div class="col-md-12">
+      <button type="button" class="btn btn-dark btn-icon float-right" ngbTooltip="Delete" (click)="delete($event, model)">
+        <i class="fa fa-trash"></i>
+      </button>
+      <button type="button" class="btn btn-dark btn-icon float-right" ngbTooltip="Properties" (click)="edit($event, model)">
+        <i class="fa fa-edit"></i>
+      </button>
+    </div>
+  </div>
+  <div class="hr-container">
+    <hr [ngStyle]="{
+                      'color' : model.properties.color, 
+                      'width' : model.properties.widthUnit === 'px' ? model.properties.width + 'px' : model.properties.width + '%',
+                      'height' : model.properties.heightUnit === 'px' ? model.properties.height + 'px' : model.properties.height + '%',
+                      'left': model.properties.align,
+                      'border-top': model.properties.lineType == 'dotted' ? 'dotted ' + model.properties.height + 'px' 
+                                  : model.properties.lineType + ' ' + model.properties.height + 'px'
+                    }"
+    >
+  </div>
+</div>
+      

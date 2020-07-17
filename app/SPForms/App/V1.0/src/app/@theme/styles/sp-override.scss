@@ -1,0 +1,18 @@
+body{
+    overflow: auto;
+}
+#s4-ribbonrow, #suiteBarDelta, #s4-titlerow{
+    display:none;
+}
+#s4-workspace{
+    overflow: inherit;
+    height: auto!important;
+    width:auto!important;
+}
+#contentRow{
+    padding: 0;
+}
+.ms-fullscreenmode #contentBox,#contentBox{
+    margin-left: 0;
+    margin-right: 0;
+}

@@ -1,0 +1,140 @@
+<div class="row">
+  <div class="col-md-6">
+    <nb-card accent="success" class="w-100">
+      <nb-card-header>Lists</nb-card-header>
+      <nb-card-body>
+        <loading *ngIf="loadingLists"></loading>
+        <div class="list-group" *ngIf="!loadingLists">
+          <button type="button" class="list-group-item list-group-item-action" *ngFor="let item of view.lists"
+            [ngClass]="{'active': item == view.selectedList}" (click)="onListSelected($event, item)">
+            {{ item.Title }}
+          </button>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-md-6">
+    <nb-card accent="success" class="w-100">
+      <nb-card-header>Default Forms
+        <button size="xsmall" type="button" class="btn btn-dark btn-icon float-right" ngbTooltip="Edit" (click)="editListForm()">
+          <i class="fa fa-edit"></i>
+        </button>
+      </nb-card-header>
+      <nb-card-body>
+        <loading *ngIf="loadingLists"></loading>
+        <div *ngIf="!loadingLists">
+          <div *ngFor="let contentType of view.selectedList?.ContentTypes">
+            <h5>{{contentType.Name}} {{contentType.Sealed ? " (Read-only)" : ""}}</h5>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Type</th>
+                  <th scope="col">Form</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    Display
+                  </th>
+                  <td>
+                    <select class="form-control" aria-placeholder="Select a form" placeholder="Select a form" disabled
+                      #displayForm>
+                      <option value="" [selected]="!contentType.DisplayFormUrl">SharePoint Default</option>
+                      <option *ngFor="let form of view.listForms" [ngValue]="form" [selected]="contentType.DisplayFormUrl == form.formUrl">
+                        {{ form.FileLeafRef }}
+                      </option>
+                    </select>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-dark btn-icon float-right" *ngIf="contentType.DisplayFormUrl"
+                      ngbTooltip="Preview" (click)="previewUsingFormName(displayForm.value)">
+                      <i class="fas fa-play"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Edit
+                  </th>
+                  <td>
+                    <select class="form-control" aria-placeholder="Select a form" placeholder="Select a form" disabled
+                      #editForm>
+                      <option value="" [selected]="!contentType.EditFormUrl">SharePoint Default</option>
+                      <option *ngFor="let form of view.listForms" [ngValue]="form" [selected]="contentType.EditFormUrl == form.editFormUrl">
+                        {{ form.FileLeafRef }}
+                      </option>
+                    </select>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-dark btn-icon float-right" *ngIf="contentType.EditFormUrl"
+                      ngbTooltip="Preview" (click)="previewUsingFormName(editForm.value)">
+                      <i class="fas fa-play"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    New
+                  </th>
+                  <td>
+                    <!-- <select class="form-control" [(ngModel)]="contentType.NewFormUrl" 
+                            aria-placeholder="Select a form" placeholder="Select a form" 
+                            disabled #newForm
+                    > -->
+                    <select class="form-control" aria-placeholder="Select a form" placeholder="Select a form" disabled
+                      #newForm>
+                      <option value="" [selected]="!contentType.NewFormUrl">
+                        SharePoint Default
+                      </option>
+                      <option *ngFor="let form of view.listForms" [ngValue]="form" [selected]="contentType.NewFormUrl == form.newFormUrl">
+                        {{ form.FileLeafRef }}
+                      </option>
+                    </select>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-dark btn-icon float-right" *ngIf="contentType.NewFormUrl"
+                      ngbTooltip="Preview" (click)="previewUsingFormName(newForm.value)">
+                      <i class="fas fa-play"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <hr />
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+
+    <nb-card accent="success" class="w-100">
+      <nb-card-header>All Forms</nb-card-header>
+      <nb-card-body>
+        <loading *ngIf="loadingForms"></loading>
+        <div *ngIf="!loadingForms">
+          <table *ngIf="view.listForms?.length > 0; else noListForms" class="table table-striped">
+            <tbody>
+              <tr *ngFor="let item of view.listForms">
+                <th>{{ item.FileLeafRef }}</th>
+                <td>
+                  <button size="xsmall" type="button" class="btn btn-dark btn-icon float-right" ngbTooltip="Edit"
+                    (click)="editForm(item)">
+                    <i class="fa fa-edit"></i>
+                  </button>
+                  <button type="button" class="btn btn-dark btn-icon float-right" (click)="previewForm(item)"
+                    ngbTooltip="Preview">
+                    <i class="fas fa-play"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ng-template #noListForms>
+          No form found for {{view.selectedList?.Title}}
+        </ng-template>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

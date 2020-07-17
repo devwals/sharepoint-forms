@@ -1,0 +1,36 @@
+<div class="shadow">
+  <div class="row">
+    <div class="col-md-12">
+      <button type="button" class="btn btn-dark btn-icon float-right" ngbTooltip="Delete" (click)="delete($event, model)">
+        <i class="fa fa-trash"></i>
+      </button>
+      <button type="button" class="btn btn-dark btn-icon float-right" ngbTooltip="Properties" (click)="edit($event, model)">
+        <i class="fa fa-edit"></i>
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <label *ngIf="model.displayLabel">{{model.label}}<span *ngIf="model.validation?.required">*</span></label>
+    </div>
+    <div class="col-md-8">
+      <i class="fa fa-bold rich"></i>
+      <i class="fa fa-italic rich"></i>
+      <i class="fa fa-underline rich"></i>
+      <i class="fa fa-align-left rich"></i>
+      <i class="fa fa-align-center rich"></i>
+      <i class="fa fa-align-right rich"></i>
+      <i class="fa fa-list-ol rich"></i>
+      <i class="fa fa-list-ul rich"></i>
+      <i class="fa fa-heading rich"></i>
+      <i class="fa fa-paint-brush rich"></i>
+      <i class="fa fa-image rich"></i>
+
+      <textarea [attr.type]="model.inputType" [ngModel]="model.defaultValue" class="form-control" 
+                disabled [placeholder]="model.placeholder"
+      ></textarea>
+      <small class="form-text">{{model.helpBlock}}</small>
+    </div>
+  </div>
+</div>
+    

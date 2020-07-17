@@ -1,0 +1,56 @@
+<div class="attachment-items-container mb-1">
+  <span class="badge badge-pill badge-light mr-1" *ngFor="let item of attachmentFiles">
+    <span class="badge-text">
+      <a href="{{item.ServerRelativeUrl}}" target="_blank">
+        {{item.FileName}}
+      </a>
+    </span>
+    <button type="button" class="btn btn-icon btn-outline-secondary float-right" 
+    (click)="remove($event, item)" *ngIf="!options.formState.disabled">
+      <i class="fas fa-times-circle"></i>
+    </button>
+  </span>
+</div>
+
+<div class="attachment-items-container mb-1" *ngIf="attachmentsToUpload.length > 0">
+  <hr /> 
+  <h5>New attachment(s)</h5>
+  <span class="badge badge-pill badge-light mr-1" *ngFor="let item of attachmentsToUpload">
+    <span class="badge-text">
+      {{item.name}}
+    </span>
+    <button type="button" class="btn btn-icon btn-outline-secondary float-right" 
+            (click)="removeFileToUpload($event, item)">
+      <i class="fas fa-times-circle"></i>
+    </button>
+  </span>
+</div>
+
+<input type="file" [formControl]="formControl" class="form-control" 
+        [formlyAttributes]="field" 
+        multiple (change)="onFileChanged($event)" 
+>
+
+<!-- <div>
+  Attachment files : {{ attachmentFiles | json}}
+</div>
+
+<div>
+  ToAttach : {{ model.ItemAttachments.ToAttach | json }}
+</div>
+
+<div>
+  Formcontrol Status : {{ formControl.status }}
+</div>
+
+<div>
+  Formcontrol touched : {{ formControl.touched }}
+</div>
+
+<div>
+  Formcontrol pristine : {{ formControl.pristine }}
+</div>
+
+<div>
+  Formcontrol errors : {{ formControl.errors | json}}
+</div> -->

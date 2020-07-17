@@ -1,0 +1,5 @@
+<input type="number" [formControl]="formControl" class="form-control"
+        [formlyAttributes]="field" [class.is-invalid]="showError"
+        [placeholder]="field.templateOptions.originalFieldOptions.placeholder"
+>
+<small class="form-text" >{{ field.templateOptions.originalFieldOptions.helpBlock }}</small>

@@ -1,0 +1,30 @@
+textarea {
+    width: 100%;
+    height: 250px;
+  }
+  .btn-icon {
+    color: #ccc;
+    background: inherit;
+    font-size: 0.8em;
+  }
+  .dw-condition-control-container {
+    display: inline-block;
+    vertical-align: top;
+    padding-right: 10px;
+  }
+  .dw-condition-control {
+    min-height: 32px;
+    -webkit-appearance: none;
+    display: inline-block;
+    padding: 5px 8px;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: auto;
+    max-width: 220px;
+  }
+  
+  

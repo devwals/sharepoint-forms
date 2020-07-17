@@ -1,0 +1,30 @@
+button.btn-icon, .nb-theme-default  button.btn-icon{
+    min-width: 20px;
+    padding:0;
+    margin:0 3px;
+}
+
+.modal-header button{
+    min-width: 20px;
+}
+
+.toast-close-button{
+    min-width: 20px;
+}
+
+.dw-modal-full-screen{
+    max-width: 100%;
+
+    @media (min-width: 992px){
+        .modal-dialog{
+            max-width: 90%;
+        }
+    }
+}
+
+
+@media print {
+    .nb-theme-default nb-layout.with-scroll .scrollable-container{
+        overflow: initial!important;
+    }
+}

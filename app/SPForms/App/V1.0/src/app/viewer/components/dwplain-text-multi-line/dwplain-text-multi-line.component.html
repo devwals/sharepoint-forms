@@ -1,0 +1,12 @@
+<!-- <textarea type="textarea" [ngModel]="model.data" class="form-control" 
+          [disabled]="field.templateOptions.disabled" 
+          [placeholder]="model.placeholder" 
+></textarea> -->
+
+<textarea type="text" [formControl]="formControl" class="form-control"
+        [formlyAttributes]="field" [class.is-invalid]="showError"
+        [placeholder]="field.templateOptions.originalFieldOptions.placeholder"
+        [disabled]="field.templateOptions.disabled"
+></textarea>
+
+<small class="form-text" >{{field.templateOptions.originalFieldOptions.helpBlock}}</small>

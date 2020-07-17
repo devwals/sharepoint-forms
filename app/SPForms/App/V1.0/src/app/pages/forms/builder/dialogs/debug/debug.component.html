@@ -1,0 +1,15 @@
+<div class="modal-header">
+    Debug Form JSON
+    <button class="close" aria-label="Close" (click)="activeModal.close(false)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body container">
+    <div class="body-text">
+        <!-- <pre><code>{{view.targetBuilderTools | json}}</code></pre> -->
+        <ngx-json-viewer [expanded]="true" [json]="view.targetBuilderTools"></ngx-json-viewer>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-md btn-secondary btn-rectangle" (click)="activeModal.close(false)">Close</button>
+  </div>

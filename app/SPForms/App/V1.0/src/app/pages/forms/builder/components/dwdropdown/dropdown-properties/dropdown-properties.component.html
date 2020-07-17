@@ -1,0 +1,49 @@
+<form #f="ngForm">
+  <div class="row optionContainer">
+    <div class="col-md-4">Option</div>
+    <div class="col-md-6"> 
+      <input class="form-control" type="text" placeholder="option name" #input>
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-primary" (click)="addOption(input.value)">Add</button>
+    </div>
+  </div>
+
+  <table class="table table-striped" >
+    <thead>
+      <tr>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let option of getOptions(); let i = index">
+        <td>
+          {{ model.options[option] }}
+        </td>
+        <td>
+          <div class="row">
+            <button size="xsmall" type="button" class="btn btn-outline-secondary btn-ghost btn-icon"
+                  (click)="selectRow(option)" nbPopover="Default Value" nbPopoverMode="hint"
+                  *ngIf="model.defaultValue != option"
+            >
+              <i class="nb-play-outline"></i>
+            </button>
+
+            <button size="xsmall" type="button" class="btn btn-outline-secondary btn-ghost btn-icon"
+                    nbPopover="Default Value" nbPopoverMode="hint" *ngIf="model.defaultValue == option"
+                    (click)="removeDefaultValue(option)"
+            >
+              <i class="nb-play"></i>
+            </button>
+
+            <button size="xsmall" type="button" class="btn btn-outline-secondary btn-ghost btn-icon"
+                    (click)="deleteRow(option)" nbPopover="Delete" nbPopoverMode="hint"
+            >
+              <i class="nb-trash"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>

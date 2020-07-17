@@ -1,0 +1,56 @@
+<form #f="ngForm" style="overflow-x: hidden;">
+  <div class="row validationContainer">
+    <div class="col-md-4">Validation</div>
+    <div class="col-md-6"> 
+      <select class="form-control" 
+              [(ngModel)]="selectedType" 
+              (change)="onTypeSelected()" name="typeSelect">
+        <option *ngFor="let x of validationTypes">
+          {{ x }}
+        </option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-primary" (click)="addValidator()">Add</button>
+    </div>
+  </div>
+ 
+  <table class="table table-striped" >
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+        <th scope="col">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let key of getValidationKeys(); let i = index">
+        <th>{{key}}</th>
+        <td>
+          <input class="form-control" type="text" 
+                [(ngModel)]="model.validation[key]"
+                *ngIf="key != 'required'"
+                name="{{key}}"
+                required
+          />
+
+          <small class="form-text error" *ngIf="f.invalid && !model.validation[key] && key != 'required'">
+            Validation condition is required.
+          </small>
+
+          <select class="form-control" 
+                  [(ngModel)]="model.validation[key]" 
+                  (change)="onTypeSelected()" *ngIf="key == 'required'" name="select">
+            <option [ngValue]="true">true</option>
+            <option [ngValue]="false">false</option>
+          </select>
+        </td>
+        <td>
+          <button size="xsmall" type="button" class="btn btn-outline-secondary btn-ghost btn-icon"
+                  (click)="deleteRow(key)" nbPopover="Delete" nbPopoverMode="hint">
+            <i class="nb-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>

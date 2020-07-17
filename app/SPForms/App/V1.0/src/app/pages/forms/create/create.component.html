@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-md-12">
+    <nb-card accent="success" class="w-100">
+      <nb-card-header>Create a new Form</nb-card-header>
+      <nb-card-body>
+        <div class="form-group row">
+          <label for="ddlList" class="col-sm-2 col-form-label">Select a List</label>
+          <div class="col-sm-10">
+            <!-- <div *ngIf="listLoaded"> -->
+              <loading *ngIf="loadingLists" mode="small"></loading>
+              <select #ddlList class="form-control" id="ddlList" 
+                  [(ngModel)]="view.selectedList" 
+                  (change)="onListSelected()" *ngIf="!loadingLists">
+                    <!-- <select #ddlList class="form-control" id="ddlList" 
+                      (change)="onListSelected($event, ddlList.value)">  -->
+                <!-- <option selected value="0"> -- select an option -- </option> -->
+                <option *ngFor="let item of view.lists" [ngValue]="item">
+                  {{ item.Title }}
+                </option>
+              </select>
+            </div>
+          <!-- </div> -->
+        </div>
+
+        <div class="form-group row">
+          <label for="inpFormName" class="col-sm-2 col-form-label">Form Name</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inpFormName" placeholder="Form Name" 
+                    [(ngModel)]="view.formName" #name="ngModel" name="name" required>
+            <small class="form-text error" *ngIf="name.invalid && (name.dirty || name.touched)">
+              Form name is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group row" *ngIf="view.selectedList != null && view.selectedList != undefined">
+          <div class="col-sm-2">Select List Fields</div>
+          <div class="col-sm-10">
+
+            <loading *ngIf="loadingListFields" mode="small"></loading>
+            <div *ngIf="!loadingListFields">
+              <div class="form-group form-check">
+                <input type="checkbox" id="chkSelectAllFields" class="form-check-input" 
+                      (click)="selectAll()" [(ngModel)]="selectedAll"
+                      [checked]="selectedAll"
+                > 
+                <label class="form-check-label" for="chkSelectAllFields">Select all</label>
+              </div>
+              
+              <div *ngFor="let item of view.fields" class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="{{item.InternalName}}" 
+                      [checked]="view.selectAllFields"
+                      [(ngModel)]="view.selectedFields[item.InternalName]"
+                      (change)="checkIfAllSelected()" />
+                <label class="form-check-label" for="{{item.InternalName}}">
+                  {{item.Title}}
+                  (
+                  <small class="text-muted">
+                    InternalName: {{item.InternalName}}
+                  </small> )
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="form-group row">
+          <div class="col-sm-12 text-right">
+            <button type="button" class="btn btn-primary" 
+                    (click)="createForm()" [disabled]="!listSelected || name.invalid">Create</button>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

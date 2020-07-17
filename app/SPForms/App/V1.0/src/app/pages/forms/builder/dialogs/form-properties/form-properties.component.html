@@ -1,0 +1,70 @@
+<div class="modal-header">
+  Properties
+  <button class="close" aria-label="Close" (click)="activeModal.close(false)">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Property</th>
+        <th scope="col">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <th scope="row">ID</th>
+        <td>{{view.item?.ID}}</td>
+      </tr>
+
+      <tr>
+        <th scope="row">List</th>
+        <td>
+          {{view.item?.RefName}}
+        </td>
+      </tr>
+
+      <tr>
+        <th scope="row">Name</th>
+        <td>
+          <input class="form-control" type="text" 
+                [(ngModel)]="view.item.FileLeafRef" #name="ngModel" 
+                name="name" required
+          >
+          <small class="form-text error" 
+                  *ngIf="name.invalid && (name.dirty || name.touched)"
+          >
+            Form name is required.
+          </small>
+        </td>
+      </tr>
+
+      <tr>
+        <th scope="row">Created on</th>
+        <td>{{view.item?.Created | date:'medium'}}</td>
+      </tr>
+
+      <tr>
+        <th scope="row">Created by</th>
+        <td>{{view.item?.Author.Title}}</td>
+      </tr>
+
+      <tr>
+        <th scope="row">Modified</th>
+        <td>{{view.item?.Modified | date:'medium'}}</td>
+      </tr>
+
+      <tr>
+        <th scope="row">Modified by</th>
+        <td>{{view.item?.Editor.Title}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-md btn-primary btn-rectangle" (click)="save()">Save</button>
+  <button class="btn btn-md btn-secondary btn-rectangle" (click)="activeModal.close(false)">Close</button>
+</div>

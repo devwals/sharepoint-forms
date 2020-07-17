@@ -1,0 +1,51 @@
+<div class="lookup-items-container mb-1"
+      [ngStyle]="{ paddingBottom: fieldOptions.readOnly ? '24.63px' : '0px' }"
+>
+  <span class="badge badge-pill badge-light mr-1" *ngFor="let item of values">
+    <span class="badge-text">{{item.DisplayText}}</span>
+    <button type="button" class="btn btn-icon btn-outline-secondary float-right" 
+            (click)="remove($event, item)" [disabled]="fieldOptions.disabled"
+            *ngIf="(!fieldOptions.readOnly && !fieldOptions.disabled) && !field.templateOptions.disabled"
+    >
+      <i class="fas fa-times-circle"></i>
+    </button>
+  </span>
+</div>
+<!--     padding-bottom: 24.63px; -->
+<ng-template #rt let-r="result" let-t="term">
+  <i class="fa fa-tag mr-1"></i>
+  <ngb-highlight [result]="r.Title" [term]="t"></ngb-highlight>
+</ng-template>
+
+<input type="hidden" [formControl]="formControl" class="form-control" [formlyAttributes]="field">
+
+<div  *ngIf="!fieldOptions.readOnly">
+  <div class="input-group">
+    <input type="text" class="form-control" [class.is-invalid]="showError" 
+            placeholder="{{field.templateOptions.placeholder}}"
+            (selectItem)="selectedItem($event)" [editable]="false" 
+            [ngbTypeahead]="search" [resultTemplate]="rt"
+            [inputFormatter]="formatter"
+            [required]="fieldOptions.validation?.required"
+            [disabled]="fieldOptions.disabled || field.templateOptions.disabled"
+            #t="ngModel" ngModel #searchBox
+    >
+    <div class="input-group-append">
+      <button class="btn btn-secondary" type="button" 
+              [disabled]="fieldOptions.disabled || field.templateOptions.disabled"
+      >
+        <i class="fa fa-user"></i>
+      </button>
+    </div>
+  </div>
+
+  <small *ngIf="values.length == 0 && 
+              (t.touched || valueDeleted) && 
+              formControl.status == 'INVALID' && 
+              this.vs.getFormAction().source['value'] != 'save'" 
+        class="invalid-feedback text-danger" 
+        [style.display]="'block'"
+  >
+    This field is required
+  </small>
+</div>

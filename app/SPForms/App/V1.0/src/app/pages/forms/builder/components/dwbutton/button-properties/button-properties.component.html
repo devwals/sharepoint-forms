@@ -1,0 +1,54 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Property</th>
+      <th scope="col">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Button Type</th>
+      <td>
+        <select class="form-control" (change)="onChange($event.target.value)">
+          <option value="save">Save</option>
+          <option value="print">Print</option>
+          <option value="back">Back</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Button Class</th>
+      <td>
+        <select class="form-control" [(ngModel)]="model.buttonClass">
+          <option value="btn-primary">Primary</option>
+          <option value="btn-warning">Warning</option>
+          <option value="btn-success">Success</option>
+          <option value="btn-info">Info</option>
+          <option value="btn-danger">Danger</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Align</th>
+      <td>
+        <select class="form-control" [(ngModel)]="model.align">
+          <option value="left">Left</option>
+          <option value="center">Center</option>
+          <option value="right">Right</option>
+        </select>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="buttonContainer">
+  <h4>Preview:</h4>
+  <div class="border">
+    <div class="row rowContainer">
+      <div class="col-md-12" [ngStyle]="{ 'text-align': model.align }">
+        <button type="button" [ngClass]="model.buttonClass" class="btn" [ngbTooltip]="model.tooltip">{{ model.label || model.name }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+  

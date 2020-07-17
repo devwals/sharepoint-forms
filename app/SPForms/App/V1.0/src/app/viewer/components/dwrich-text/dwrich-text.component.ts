@@ -1,0 +1,38 @@
+import { Component, OnInit } from '@angular/core';
+import { FieldType } from '@ngx-formly/core';
+import { ViewerService } from '../../../services/viewer.service';
+
+@Component({
+  selector: 'dwrich-text',
+  templateUrl: './dwrich-text.component.html',
+  styleUrls: ['./dwrich-text.component.scss'],
+  host: {
+    '[class.d-inline-flex]': 'to.addonLeft || to.addonRight',
+    '[class.custom-file]': 'to.addonLeft || to.addonRight',
+  }
+})
+export class DwrichTextComponent extends FieldType implements OnInit {
+
+  fieldOptions: any;
+
+  config: any = {
+    auto_focus: '',
+    theme: 'modern',
+    height: 250
+  }
+
+  constructor(private vs: ViewerService) {
+    super();
+  }
+
+  get type() {
+    return this.to.type || 'text';
+  }
+
+  ngOnInit() {
+    this.fieldOptions = this.field.templateOptions.originalFieldOptions;
+    // if(this.vs.getMode() == "preview" || this.vs.isNewMode()){
+    //   this.formControl.setValue(this.field.templateOptions.originalFieldOptions.defaultValue);
+    // }
+  }
+}

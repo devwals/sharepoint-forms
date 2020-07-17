@@ -1,0 +1,103 @@
+@import "../../../@theme/styles/themes.scss";
+
+.builder-container {
+  .btn-icon {
+    font-size: 1.5rem;
+    background: transparent;
+    color: rgba(0, 0, 0, 1);
+    &:hover,
+    &:focus {
+      color: #000;
+      background: #add8e6;
+    }
+  }
+
+  ngx-dnd-container div.ngx-dnd-container {
+    border: none;
+    background: nb-theme(card-bg);
+    padding: 0;
+    margin: 0;
+  }
+
+  ngx-dnd-container div.ngx-dnd-container.gu-empty {
+    border: 1px dashed;
+    padding: 10px;
+    &:after {
+      content: "DROP HERE!";
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+  }
+
+  .section ngx-dnd-container div.ngx-dnd-container {
+    // padding:10px;
+    margin: 0px;
+    // border:1px dashed;
+  }
+
+  .columns ngx-dnd-container div.ngx-dnd-container {
+    // padding:10px;
+    margin: 0px;
+    // border:1px dashed;
+  }
+
+  .builder-source {
+    nb-card-body {
+      padding: 0;
+    }
+    ngx-dnd-item {
+      margin: 0px;
+      padding: 5px 10px;
+      border: none;
+      border-bottom: 1px dashed rgba(0, 0, 0, 0.125);
+      background: nb-theme(card-bg);
+      i {
+        font-size: 1.5rem;
+        vertical-align: middle;
+        min-width: 30px;
+      }
+      &:hover {
+        font-weight: 700;
+        background-color: #add8e6;
+      }
+    }
+
+    .builder-tools-accordion {
+      .card-body {
+        padding: 5px;
+      }
+      .card {
+        border: none;
+      }
+      .card-header {
+        border-bottom: 2px dashed rgba(0, 0, 0, 0.125);
+        padding: 0;
+        a {
+          padding: 0.75rem 1.25rem;
+          display: block;
+        }
+      }
+    }
+
+  }
+
+  .builder-target ngx-dnd-item {
+    margin: 5px;
+    background: nb-theme(card-bg);
+
+    .btn-icon {
+      font-size: 1rem;
+      margin: 2px;
+      background: transparent;
+      color: rgba(0, 0, 0, 0.2);
+      &:hover {
+        color: #000;
+        background: #add8e6;
+      }
+    }
+    
+    .input-group-text {
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+}

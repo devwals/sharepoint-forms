@@ -1,0 +1,92 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Property</th>
+      <th scope="col">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <tr *ngIf="itemProperties.indexOf('id') !== -1">
+      <th scope="row">Id</th>
+      <td>{{model.id}}</td>
+    </tr> -->
+    <tr *ngIf="itemProperties.indexOf('type') !== -1">
+      <th scope="row">Type</th>
+      <td>
+        {{model.type}}
+      </td>
+    </tr>
+    <tr *ngIf="itemProperties.indexOf('label') !== -1">
+      <th scope="row">Label</th>
+      <td>
+        <input type="text" [(ngModel)]="model.label" class="form-control">
+      </td>
+    </tr>
+    <tr *ngIf="itemProperties.indexOf('class') !== -1">
+      <th scope="row">Class</th>
+      <td>
+        <input type="text" [(ngModel)]="model.class" class="form-control">
+      </td>
+    </tr>
+    <tr *ngIf="itemProperties.indexOf('displayLabel') !== -1">
+      <th scope="row">Display label</th>
+      <td>
+        <div class="custom-control custom-checkbox">
+          <input id="displayLabel" class="custom-control-input" type="checkbox"
+                  [(ngModel)]="model.displayLabel"
+          >
+            <label class="custom-control-label" for="displayLabel">
+              &nbsp;
+            </label>
+        </div>
+      </td>
+    </tr> 
+    <tr *ngIf="itemProperties.indexOf('hiddenField') !== -1">
+      <th scope="row">Hidden Field</th> 
+      <td>
+        <select class="form-control" [(ngModel)]="model.hiddenField">
+          <option [ngValue]="true">true</option>
+          <option [ngValue]="false">false</option>
+        </select>
+      </td>
+    </tr>
+    <tr *ngIf="itemProperties.indexOf('readOnly') !== -1">
+      <th scope="row">Read-only</th>
+      <td>
+        <select class="form-control" [(ngModel)]="model.readOnly" [disabled]="model.key == 'Author' || 
+                                                                              model.key == 'Editor'"
+        >
+          <option [ngValue]="true">true</option>
+          <option [ngValue]="false">false</option>
+        </select>
+      </td>
+    </tr>
+    <tr *ngIf="itemProperties.indexOf('disabled') !== -1">
+      <th scope="row">Disabled</th>
+      <td>
+        <select class="form-control" [(ngModel)]="model.disabled">
+          <option [ngValue]="true">true</option>
+          <option [ngValue]="false">false</option>
+        </select>
+      </td>
+    </tr>
+    <tr *ngIf="itemProperties.indexOf('helpBlock') !== -1">
+      <th scope="row">Help block</th>
+      <td>
+        <input type="text" [(ngModel)]="model.helpBlock" class="form-control">
+      </td>
+    </tr>
+    <tr *ngIf="itemProperties.indexOf('tooltip') !== -1">
+      <th scope="row">Tooltip</th>
+      <td>
+        <input type="text" [(ngModel)]="model.tooltip" class="form-control">
+      </td>
+    </tr>
+    <tr *ngIf="itemProperties.indexOf('placeholder') !== -1">
+      <th scope="row">Placeholder</th>
+      <td>
+        <input type="text" [(ngModel)]="model.placeholder" class="form-control">
+      </td>
+    </tr>
+  </tbody>
+</table>

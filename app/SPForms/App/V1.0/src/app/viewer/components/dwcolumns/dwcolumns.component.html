@@ -1,0 +1,16 @@
+<div class="columnContainer">
+    <div class="column" *ngFor="let item of fields; let index = index;">
+        <div class="columnBody">
+            
+            <formly-form 
+                            [form]="columnForms[index]" 
+                            [model]="model" 
+                            [fields]="item.fields" 
+                            [options]="options"
+            >
+            </formly-form>
+
+            <ng-container #formComponent></ng-container>
+        </div>
+    </div>
+</div>

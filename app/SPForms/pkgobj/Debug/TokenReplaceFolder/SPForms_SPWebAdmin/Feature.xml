@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Description="SharePoint Web Administration for administering web, lists, libraries, permissions etc. " Id="b8a61a60-e8a2-4ab3-95cb-9dc0523f947d" Scope="Web" Title="SPWebAdmin Installation Feature" Version="1.0.0.0">
+  <ElementManifests>
+    <ElementManifest Location="Elements.xml" />
+    <ElementFile Location="Readme.txt" />
+    <ElementManifest Location="Styles\Elements.xml" />
+    <ElementFile Location="Styles\app.css" />
+    <ElementManifest Location="Pages\Elements.xml" />
+    <ElementFile Location="Pages\Default.aspx" />
+    <ElementFile Location="Pages\Viewer.aspx" />
+    <ElementManifest Location="StoreDataInstance\Elements.xml" />
+    <ElementManifest Location="StoreData\Elements.xml" />
+    <ElementFile Location="StoreData\Schema.xml" />
+  </ElementManifests>
+  <UpgradeActions>
+    <VersionRange>
+      <ApplyElementManifests>
+        <ElementManifest Location="Elements.xml" />
+        <ElementManifest Location="Styles\Elements.xml" />
+        <ElementManifest Location="Pages\Elements.xml" />
+        <ElementManifest Location="StoreDataInstance\Elements.xml" />
+        <ElementManifest Location="StoreData\Elements.xml" />
+      </ApplyElementManifests>
+    </VersionRange>
+  </UpgradeActions>
+</Feature>

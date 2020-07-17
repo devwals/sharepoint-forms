@@ -1,0 +1,13 @@
+.btn-icon{
+    font-size: 1.5rem;
+    background: transparent;
+    color:rgba(0, 0, 0, 1);
+    &:hover, &:focus{
+      color:#000;
+      background:#add8e6;
+    }
+}
+
+.form-control[disabled]{
+  background-color:#f2f2f28f;
+}

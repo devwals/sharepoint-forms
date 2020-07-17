@@ -1,0 +1,26 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Property</th>
+        <th scope="col">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Url</th>
+        <td>
+          <input type="text" [(ngModel)]="model.url" class="form-control">
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Target Type</th>
+        <td>
+          <select class="form-control inputBox" [(ngModel)]="model.targetType">
+            <option value="_self">Same Tab</option>
+            <option value="_blank">New Tab</option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

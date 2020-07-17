@@ -1,0 +1,38 @@
+<div class="modal-header">
+    {{temp.label}} Properties
+    <button class="close" aria-label="Close" (click)="cancel();">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  
+  <div class="modal-body container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Properties</th>
+          <th scope="col">value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let key of getModelKeys();">
+          <td>
+            {{ key }}
+          </td>
+          <td>
+            {{ model[key] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+  <!-- <div class="body-text">
+    <div>temp</div>
+    <pre><code>{{temp | json}}</code></pre>
+  </div> -->
+</div>
+  
+<div class="modal-footer">
+  <button type="button" class="btn btn-md btn-primary btn-rectangle" (click)="updateObject()">Ok</button>
+  <button type="button" class="btn btn-md btn-secondary btn-rectangle" (click)="cancel()">Close</button>
+</div>
+    

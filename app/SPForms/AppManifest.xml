@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created:cb85b80c-f585-40ff-8bfc-12ff4d0e34a9-->
+<App xmlns="http://schemas.microsoft.com/sharepoint/2012/app/manifest"
+     Name="DevwalsForms"
+     ProductID="{7DB1B542-30D1-43D5-91DB-6A09E16C3A29}"
+     Version="1.0.0.0"
+     SharePointMinVersion="16.0.0.0"
+>
+  <Properties>
+    <Title>Devwals SharePoint Forms</Title>
+    <StartPage>~appWebUrl/Pages/Default.aspx?{StandardTokens}</StartPage>
+    <SupportedLocales>
+      <SupportedLocale CultureName="en-AU" />
+      <SupportedLocale CultureName="en" />
+      <SupportedLocale CultureName="en-US" />
+    </SupportedLocales>
+  </Properties>
+
+  <AppPrincipal>
+    <Internal />
+  </AppPrincipal>
+  <AppPermissionRequests>
+    <AppPermissionRequest Scope="http://sharepoint/content/sitecollection/web" Right="Manage" />
+  </AppPermissionRequests>
+  <RemoteEndpoints>
+    <RemoteEndpoint Url="https://verificationservice.officeapps.live.com/ova/verificationagent.svc" />
+  </RemoteEndpoints>
+</App>

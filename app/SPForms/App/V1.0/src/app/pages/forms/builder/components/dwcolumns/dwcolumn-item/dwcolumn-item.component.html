@@ -1,0 +1,24 @@
+<div class="shadow dwColumn">
+    <div class="row">
+      <div class="col-md-12">
+        <button type="button" class="btn btn-dark btn-icon float-right" ngbTooltip="Delete"
+          (click)="delete(model)">
+          <i class="fa fa-trash"></i>
+        </button>
+        <button type="button" class="btn btn-dark btn-icon float-right" ngbTooltip="Properties"
+          (click)="edit(model)">
+          <i class="fa fa-edit"></i>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <ngx-dnd-container dropZone="builder-target" [model]="model.children" [removeOnSpill]="false"
+          [template]="template" [droppableItemClass]="droppableItemClass" (drag)="log($event)"
+          (drop)="log($event)" (over)="log($event)" (out)="log($event)" (remove)="log($event)"
+          (cancel)="log($event)">
+        </ngx-dnd-container>
+      </div>
+    </div>
+
+  </div>

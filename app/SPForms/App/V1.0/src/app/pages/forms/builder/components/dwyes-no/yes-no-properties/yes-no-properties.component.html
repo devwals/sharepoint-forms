@@ -1,0 +1,77 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Property</th>
+      <th scope="col">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Display Type</th>
+      <td>
+        <select class="form-control inputBox" [(ngModel)]="model.properties.displayType">
+          <option value="radio">Radio</option>
+          <option value="switch rectangular">Rectangular Switch</option>
+          <option value="switch rounded">Rounded Switch(default)</option>
+        </select>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="model.type == 'yesno'" style="overflow-x: hidden;">
+  <h4>Preview</h4>
+  <div class="previewContainter">
+    <div class="row" *ngIf="model.properties.displayType == 'radio'">
+      <div class="col-md-4">
+        <label *ngIf="model.displayLabel">{{model.label}}
+          <span *ngIf="model.validation?.required">*</span></label>
+      </div>
+      <div [ngClass]="model.displayLabel ? 'col-md-8' : 'col-md-11'">
+        <div class="custom-control custom-radio" 
+              *ngFor="let option of model.options; let i = index;"
+        >
+          <input class="custom-control-input" type="radio" 
+                  [checked]="model.defaultValue == option.value"
+                  [value]="option.defaultValue" disabled
+          >
+          <label class="custom-control-label">
+            {{ option.label }}
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rectangular switch -->
+    <div class="row switchContainer" 
+          *ngIf="model.properties.displayType == 'switch rectangular'"
+    >
+      <div class="col-md-4">
+        <label *ngIf="model.displayLabel">{{model.label}}
+          <span *ngIf="model.validation?.required">*</span></label>
+      </div>
+      <div [ngClass]="model.displayLabel ? 'col-md-8' : 'col-md-11'">
+        <label class="switch">
+          <input type="checkbox" [checked]="model.defaultValue" disabled>
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+    
+    <!-- Rounded switch -->
+    <div class="row switchContainer" 
+          *ngIf="model.properties.displayType == 'switch rounded'"
+    >
+      <div class="col-md-4">
+        <label *ngIf="model.displayLabel">{{model.label}}
+          <span *ngIf="model.validation?.required">*</span></label>
+      </div>
+      <div [ngClass]="model.displayLabel ? 'col-md-8' : 'col-md-11'">
+        <label class="switch">
+          <input type="checkbox" [checked]="model.defaultValue" disabled>
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

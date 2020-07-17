@@ -1,0 +1,31 @@
+<div class="shadow">
+  <div class="row">
+    <div class="col-md-12">
+      <button type="button" class="btn btn-dark btn-icon float-right" ngbTooltip="Delete" (click)="delete($event, model)">
+        <i class="fa fa-trash"></i>
+      </button>
+      <button type="button" class="btn btn-dark btn-icon float-right" ngbTooltip="Properties" (click)="edit($event, model)">
+        <i class="fa fa-edit"></i>
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4" *ngIf="model.displayLabel">
+      <label *ngIf="model.displayLabel">{{model.label}}<span *ngIf="model.validation?.required">*</span></label>
+    </div>
+    <div [ngClass]="model.displayLabel ? 'col-md-8' : 'col-md-11'">
+        <select class="form-control">
+          <option *ngIf="!model.defaultValue">{{ model.placeholder }}</option>
+          <option *ngFor="let option of getOptions();" 
+                  [value]="option"
+                  [attr.selected]="model.defaultValue == option ? true : null"
+                  disabled
+          >
+            {{option}}
+          </option>
+        </select>
+      <small class="form-text" >{{model.helpBlock}}</small>
+    </div>
+  </div>
+</div>
+  

@@ -1,0 +1,11 @@
+<div class="modal-header">
+  {{ modalHeader }}
+</div>
+<div class="modal-body container">
+  <i class="nb-alert"></i>
+  <span class="body-text">{{ modalContent }}</span>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-md btn-danger btn-rectangle" (click)="activeModal.close(true)">Delete</button>
+  <button class="btn btn-md btn-secondary btn-rectangle" (click)="activeModal.close(false)">Cancel</button>
+</div>

@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-md-12" [ngStyle]="{'text-align': fieldOptions.properties.align === 'Center' ? 'center': 'left', 
+                                    'text-align': fieldOptions.properties.align === 'Right' ? 'right' : 'center',
+                                    'text-align': fieldOptions.properties.align === 'Left' ? 'left' : 'center'}">
+      <label *ngIf="fieldOptions.displayLabel" 
+              [ngStyle]="{
+                          'color' : fieldOptions.properties.color, 
+                          'font-size' : fieldOptions.properties.size +'px',
+                          'font-weight': fieldOptions.properties.fontWeight,
+                          'font-style': fieldOptions.properties.fontStyle,
+                          'text-decoration': fieldOptions.properties.textDecoration
+                        }"
+      >
+        {{ fieldOptions.label }}
+        <span *ngIf="fieldOptions.validation?.required">*</span>
+      </label>
+  </div>
+</div>

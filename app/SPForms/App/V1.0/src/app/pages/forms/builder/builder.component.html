@@ -1,0 +1,155 @@
+<div class="builder-container">
+
+  <div class="row">
+    <div class="col-md-12">
+      <nb-card accent="success" class="w-100">
+        <nb-card-header>
+          Form Builder - {{view.item?.FileLeafRef}}
+          <button type="button" class="btn btn-icon btn-dark float-right" (click)="onDebug($event)" ngbTooltip="Debug Form JSON">
+            <i class="fa fa-bug"></i>
+          </button>
+          <button type="button" class="btn btn-dark btn-icon float-right" (click)="onEdit($event)" ngbTooltip="Edit Form Properties">
+            <i class="fa fa-edit"></i>
+          </button>
+          <button type="button" class="btn btn-dark btn-icon float-right" (click)="onPreview()" ngbTooltip="Preview">
+            <i class="fas fa-play"></i>
+          </button>
+          <button type="button" class="btn btn-icon btn-dark float-right" ngbTooltip="Edit Conditional Logic" (click)="onLogic($event)">
+            <i class="fas fa-sliders-h"></i>
+          </button>
+          <!-- <button type="button" class="btn btn-icon btn-dark float-right" ngbTooltip="Edit Query Rules" 
+          (click)="onEditQueryRules($event)">
+            <i class="fas fa-database"></i>
+          </button> -->
+          <button type="button" class="btn btn-icon btn-dark float-right" ngbTooltip="Save Form" (click)="onSave($event)">
+            <i class="far fa-save"></i>
+          </button>
+        </nb-card-header>
+        <nb-card-body>
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="builder-source">
+                <nb-card class="w-100">
+                  <nb-card-header>
+                    Tools
+                  </nb-card-header>
+                  <nb-card-body>
+
+                    <ngb-accordion #acc="ngbAccordion" [closeOthers]="true" activeIds="ngb-panel-0" class="builder-tools-accordion">
+                      <ngb-panel id="ngb-panel-0">
+                        <ng-template ngbPanelTitle>
+                          <div class="text-dark"><strong>General</strong></div>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+
+                          <ngx-dnd-container class="root-container" [model]="view.generalTools" [dropZones]="['builder-target']"
+                            [copy]="true" [droppableItemClass]="droppableItemClass" (drag)="builderDrag($event)">
+
+                            <ng-template let-item="model">
+                              <i [class]="item.icon"></i>
+                              {{item.label}}
+                            </ng-template>
+
+                          </ngx-dnd-container>
+
+                        </ng-template>
+                      </ngb-panel>
+                      <ngb-panel>
+                        <ng-template ngbPanelTitle>
+                          <div class="text-dark"><strong>SharePoint</strong></div>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+
+                          <ngx-dnd-container class="root-container" [model]="view.sharepointTools" [dropZones]="['builder-target']"
+                            [copy]="true" [droppableItemClass]="droppableItemClass" (drag)="builderDrag($event)">
+
+                            <ng-template let-item="model">
+                              <i [class]="item.icon"></i>
+                              {{item.label}}
+                            </ng-template>
+
+                          </ngx-dnd-container>
+
+                        </ng-template>
+                      </ngb-panel>
+
+                      <ngb-panel>
+                        <ng-template ngbPanelTitle>
+                          <div class="text-dark"><strong>Layout</strong></div>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+
+                          <ngx-dnd-container class="root-container" [model]="view.layoutTools" [dropZones]="['builder-target']"
+                            [copy]="true" [droppableItemClass]="droppableItemClass" (drag)="builderDrag($event)">
+
+                            <ng-template let-item="model">
+                              <i [class]="item.icon"></i>
+                              {{item.label}}
+                            </ng-template>
+
+                          </ngx-dnd-container>
+
+                        </ng-template>
+                      </ngb-panel>
+                    </ngb-accordion>
+
+                  </nb-card-body>
+                </nb-card>
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <div class="builder-target">
+                <nb-card class="w-100">
+                  <nb-card-header>
+                    Canvas
+                  </nb-card-header>
+                  <nb-card-body style="overflow: visible;">
+                    <loading *ngIf="loading"></loading>
+                    <ngx-dnd-container class="root-container" [model]="view.targetBuilderTools" dropZone="builder-target"
+                      [removeOnSpill]="false" [droppableItemClass]="droppableItemClass" (drag)="log($event)" (drop)="log($event)"
+                      (over)="log($event)" (out)="log($event)" (remove)="log($event)" *ngIf="!loading">
+
+                      <ng-template let-model="model" let-template="template">
+                        <div [ngSwitch]="model.type">
+                          <div *ngSwitchCase="'nestedForm'">
+                            <dw-nested-form [model]="model" [template]="template" (deleteRequest)="onDeleteItem(model)"
+                              (editRequest)="onEditItem(model)" (logRequest)="log($event)"></dw-nested-form>
+                          </div>
+                          <div *ngSwitchCase="'section'">
+                            <dwsection [model]="model" [template]="template" (deleteRequest)="onDeleteItem(model)"
+                              (editRequest)="onEditItem(model)" (logRequest)="log($event)"></dwsection>
+                          </div>
+                          <div *ngSwitchCase="'tabs'">
+                            <dwtab [model]="model" [template]="template" (deleteRequest)="onDeleteItem($event)"
+                              (editRequest)="onEditItem($event)" (logRequest)="log($event)"></dwtab>
+                          </div>
+                          <div *ngSwitchCase="'columns'">
+                            <dwcolumns [model]="model" [template]="template" (deleteRequest)="onDeleteItem($event)"
+                              (editRequest)="onEditItem($event)" (logRequest)="log($event)"></dwcolumns>
+                          </div>
+                          <div *ngSwitchDefault>
+                            <dwcomponent-loader [listData]="listData" [model]="model" (deleteRequest)="onDeleteItem(model)"
+                              (editRequest)="onEditItem($event)"></dwcomponent-loader>
+                          </div>
+                        </div>
+                      </ng-template>
+                    </ngx-dnd-container>
+                  </nb-card-body>
+                </nb-card>
+              </div>
+            </div>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+</div>
+
+<!-- <div>
+  <h3>Model</h3>
+  <pre><code>{{view.targetBuilderTools | json}}</code></pre>
+</div>
+
+<pre><code>{{ view.form | json }}</code></pre> -->

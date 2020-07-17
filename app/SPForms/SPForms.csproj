@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{689669EB-80A5-4D0F-9883-C4C67E14D741}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>nb.Intranet</RootNamespace>
+    <AssemblyName>nb.Intranet</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetOfficeVersion>16.1</TargetOfficeVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <MinimumOfficeToolsVersion>12.2</MinimumOfficeToolsVersion>
+    <IncludeAssemblyInPackage>False</IncludeAssemblyInPackage>
+    <ProjectMode>SharePointApp</ProjectMode>
+    <AppFeaturePartId>{8113159a-06e9-4825-b69f-25cf4787e4c5}</AppFeaturePartId>
+    <WspPartId>{f0f3bd30-1b35-4b4f-80f3-065adeb14440}</WspPartId>
+    <WorkflowPartId>{41ae97c9-59b6-48c5-9ec9-98d2511d5726}</WorkflowPartId>
+    <CspkgPartId>{2543f007-f475-433f-a35c-ae7c2ad6724e}</CspkgPartId>
+    <SqlPackagePartId>{24f7c749-2120-483a-aa42-5d0a0a887e32}</SqlPackagePartId>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="App\dist\3rdpartylicenses.txt" />
+    <Content Include="App\dist\app-pages-forms-forms-module.js" />
+    <Content Include="App\dist\app-pages-pages-module.js" />
+    <Content Include="App\dist\assets\images\alan.png" />
+    <Content Include="App\dist\assets\images\eva.png" />
+    <Content Include="App\dist\assets\images\jack.png" />
+    <Content Include="App\dist\assets\images\kate.png" />
+    <Content Include="App\dist\assets\images\kitten-corporate.png" />
+    <Content Include="App\dist\assets\images\lee.png" />
+    <Content Include="App\dist\assets\images\nick.png" />
+    <Content Include="App\dist\common.js" />
+    <Content Include="App\dist\exo-latin-100.svg" />
+    <Content Include="App\dist\exo-latin-100italic.svg" />
+    <Content Include="App\dist\exo-latin-200.svg" />
+    <Content Include="App\dist\exo-latin-200italic.svg" />
+    <Content Include="App\dist\exo-latin-300.svg" />
+    <Content Include="App\dist\exo-latin-300italic.svg" />
+    <Content Include="App\dist\exo-latin-400.svg" />
+    <Content Include="App\dist\exo-latin-400italic.svg" />
+    <Content Include="App\dist\exo-latin-500.svg" />
+    <Content Include="App\dist\exo-latin-500italic.svg" />
+    <Content Include="App\dist\exo-latin-600.svg" />
+    <Content Include="App\dist\exo-latin-600italic.svg" />
+    <Content Include="App\dist\exo-latin-700.svg" />
+    <Content Include="App\dist\exo-latin-700italic.svg" />
+    <Content Include="App\dist\exo-latin-800.svg" />
+    <Content Include="App\dist\exo-latin-800italic.svg" />
+    <Content Include="App\dist\exo-latin-900.svg" />
+    <Content Include="App\dist\exo-latin-900italic.svg" />
+    <Content Include="App\dist\favicon.ico" />
+    <Content Include="App\dist\favicon.png" />
+    <Content Include="App\dist\index.html" />
+    <Content Include="App\dist\ionicons.svg" />
+    <Content Include="App\dist\main.js" />
+    <Content Include="App\dist\nebular.svg" />
+    <Content Include="App\dist\polyfills.js" />
+    <Content Include="App\dist\Roboto-Black.svg" />
+    <Content Include="App\dist\Roboto-BlackItalic.svg" />
+    <Content Include="App\dist\Roboto-Bold.svg" />
+    <Content Include="App\dist\Roboto-BoldItalic.svg" />
+    <Content Include="App\dist\Roboto-Light.svg" />
+    <Content Include="App\dist\Roboto-LightItalic.svg" />
+    <Content Include="App\dist\Roboto-Medium.svg" />
+    <Content Include="App\dist\Roboto-MediumItalic.svg" />
+    <Content Include="App\dist\Roboto-Regular.svg" />
+    <Content Include="App\dist\Roboto-RegularItalic.svg" />
+    <Content Include="App\dist\Roboto-Thin.svg" />
+    <Content Include="App\dist\Roboto-ThinItalic.svg" />
+    <Content Include="App\dist\runtime.js" />
+    <Content Include="App\dist\scripts.js" />
+    <Content Include="App\dist\socicon.svg" />
+    <Content Include="App\dist\styles.js" />
+    <Content Include="App\dist\vendor.js" />
+    <Content Include="Pages\Viewer.aspx" />
+    <Content Include="Products\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="StoreData\Elements.xml" />
+    <Content Include="StoreData\Schema.xml" />
+    <Content Include="StoreData\StoreDataInstance\Elements.xml" />
+    <Content Include="Styles\Elements.xml" />
+    <Content Include="Styles\app.css" />
+    <None Include="App\dist\app-pages-forms-forms-module.js.map" />
+    <None Include="App\dist\app-pages-pages-module.js.map" />
+    <None Include="App\dist\assets\map\world.json" />
+    <None Include="App\dist\common.js.map" />
+    <None Include="App\dist\exo-latin-100.eot" />
+    <None Include="App\dist\exo-latin-100.woff" />
+    <None Include="App\dist\exo-latin-100.woff2" />
+    <None Include="App\dist\exo-latin-100italic.eot" />
+    <None Include="App\dist\exo-latin-100italic.woff" />
+    <None Include="App\dist\exo-latin-100italic.woff2" />
+    <None Include="App\dist\exo-latin-200.eot" />
+    <None Include="App\dist\exo-latin-200.woff" />
+    <None Include="App\dist\exo-latin-200.woff2" />
+    <None Include="App\dist\exo-latin-200italic.eot" />
+    <None Include="App\dist\exo-latin-200italic.woff" />
+    <None Include="App\dist\exo-latin-200italic.woff2" />
+    <None Include="App\dist\exo-latin-300.eot" />
+    <None Include="App\dist\exo-latin-300.woff" />
+    <None Include="App\dist\exo-latin-300.woff2" />
+    <None Include="App\dist\exo-latin-300italic.eot" />
+    <None Include="App\dist\exo-latin-300italic.woff" />
+    <None Include="App\dist\exo-latin-300italic.woff2" />
+    <None Include="App\dist\exo-latin-400.eot" />
+    <None Include="App\dist\exo-latin-400.woff" />
+    <None Include="App\dist\exo-latin-400.woff2" />
+    <None Include="App\dist\exo-latin-400italic.eot" />
+    <None Include="App\dist\exo-latin-400italic.woff" />
+    <None Include="App\dist\exo-latin-400italic.woff2" />
+    <None Include="App\dist\exo-latin-500.eot" />
+    <None Include="App\dist\exo-latin-500.woff" />
+    <None Include="App\dist\exo-latin-500.woff2" />
+    <None Include="App\dist\exo-latin-500italic.eot" />
+    <None Include="App\dist\exo-latin-500italic.woff" />
+    <None Include="App\dist\exo-latin-500italic.woff2" />
+    <None Include="App\dist\exo-latin-600.eot" />
+    <None Include="App\dist\exo-latin-600.woff" />
+    <None Include="App\dist\exo-latin-600.woff2" />
+    <None Include="App\dist\exo-latin-600italic.eot" />
+    <None Include="App\dist\exo-latin-600italic.woff" />
+    <None Include="App\dist\exo-latin-600italic.woff2" />
+    <None Include="App\dist\exo-latin-700.eot" />
+    <None Include="App\dist\exo-latin-700.woff" />
+    <None Include="App\dist\exo-latin-700.woff2" />
+    <None Include="App\dist\exo-latin-700italic.eot" />
+    <None Include="App\dist\exo-latin-700italic.woff" />
+    <None Include="App\dist\exo-latin-700italic.woff2" />
+    <None Include="App\dist\exo-latin-800.eot" />
+    <None Include="App\dist\exo-latin-800.woff" />
+    <None Include="App\dist\exo-latin-800.woff2" />
+    <None Include="App\dist\exo-latin-800italic.eot" />
+    <None Include="App\dist\exo-latin-800italic.woff" />
+    <None Include="App\dist\exo-latin-800italic.woff2" />
+    <None Include="App\dist\exo-latin-900.eot" />
+    <None Include="App\dist\exo-latin-900.woff" />
+    <None Include="App\dist\exo-latin-900italic.eot" />
+    <None Include="App\dist\exo-latin-900italic.woff" />
+    <None Include="App\dist\exo-latin-900italic.woff2" />
+    <None Include="App\dist\ionicons.eot" />
+    <None Include="App\dist\ionicons.ttf" />
+    <None Include="App\dist\ionicons.woff" />
+    <None Include="App\dist\main.js.map" />
+    <None Include="App\dist\nebular.eot" />
+    <None Include="App\dist\nebular.ttf" />
+    <None Include="App\dist\nebular.woff" />
+    <None Include="App\dist\polyfills.js.map" />
+    <None Include="App\dist\Roboto-Black.eot" />
+    <None Include="App\dist\Roboto-Black.ttf" />
+    <None Include="App\dist\Roboto-Black.woff" />
+    <None Include="App\dist\Roboto-Black.woff2" />
+    <None Include="App\dist\Roboto-BlackItalic.eot" />
+    <None Include="App\dist\Roboto-BlackItalic.ttf" />
+    <None Include="App\dist\Roboto-BlackItalic.woff" />
+    <None Include="App\dist\Roboto-BlackItalic.woff2" />
+    <None Include="App\dist\Roboto-Bold.eot" />
+    <None Include="App\dist\Roboto-Bold.ttf" />
+    <None Include="App\dist\Roboto-Bold.woff" />
+    <None Include="App\dist\Roboto-Bold.woff2" />
+    <None Include="App\dist\Roboto-BoldItalic.eot" />
+    <None Include="App\dist\Roboto-BoldItalic.ttf" />
+    <None Include="App\dist\Roboto-BoldItalic.woff" />
+    <None Include="App\dist\Roboto-BoldItalic.woff2" />
+    <None Include="App\dist\Roboto-Light.eot" />
+    <None Include="App\dist\Roboto-Light.ttf" />
+    <None Include="App\dist\Roboto-Light.woff" />
+    <None Include="App\dist\Roboto-Light.woff2" />
+    <None Include="App\dist\Roboto-LightItalic.eot" />
+    <None Include="App\dist\Roboto-LightItalic.ttf" />
+    <None Include="App\dist\Roboto-LightItalic.woff" />
+    <None Include="App\dist\Roboto-LightItalic.woff2" />
+    <None Include="App\dist\Roboto-Medium.eot" />
+    <None Include="App\dist\Roboto-Medium.ttf" />
+    <None Include="App\dist\Roboto-Medium.woff" />
+    <None Include="App\dist\Roboto-Medium.woff2" />
+    <None Include="App\dist\Roboto-MediumItalic.eot" />
+    <None Include="App\dist\Roboto-MediumItalic.ttf" />
+    <None Include="App\dist\Roboto-MediumItalic.woff" />
+    <None Include="App\dist\Roboto-MediumItalic.woff2" />
+    <None Include="App\dist\Roboto-Regular.eot" />
+    <None Include="App\dist\Roboto-Regular.ttf" />
+    <None Include="App\dist\Roboto-Regular.woff" />
+    <None Include="App\dist\Roboto-Regular.woff2" />
+    <None Include="App\dist\Roboto-RegularItalic.eot" />
+    <None Include="App\dist\Roboto-RegularItalic.ttf" />
+    <None Include="App\dist\Roboto-RegularItalic.woff" />
+    <None Include="App\dist\Roboto-RegularItalic.woff2" />
+    <None Include="App\dist\Roboto-Thin.eot" />
+    <None Include="App\dist\Roboto-Thin.ttf" />
+    <None Include="App\dist\Roboto-Thin.woff" />
+    <None Include="App\dist\Roboto-Thin.woff2" />
+    <None Include="App\dist\Roboto-ThinItalic.eot" />
+    <None Include="App\dist\Roboto-ThinItalic.ttf" />
+    <None Include="App\dist\Roboto-ThinItalic.woff" />
+    <None Include="App\dist\Roboto-ThinItalic.woff2" />
+    <None Include="App\dist\runtime.js.map" />
+    <None Include="App\dist\scripts.js.map" />
+    <None Include="App\dist\socicon.eot" />
+    <None Include="App\dist\socicon.ttf" />
+    <None Include="App\dist\socicon.woff" />
+    <None Include="App\dist\styles.js.map" />
+    <None Include="App\dist\vendor.js.map" />
+    <None Include="App\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{1629bab7-4ab5-4a21-b3ae-44fd77c68483}</SharePointProjectItemId>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Pages\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{c765d60b-b380-420e-a73b-159b7d235de1}</SharePointProjectItemId>
+    </None>
+    <Content Include="App\Elements.xml" />
+    <Content Include="Elements.xml" />
+    <Content Include="Pages\Elements.xml" />
+    <Content Include="Pages\Default.aspx" />
+    <None Include="Products\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{cfdc7d81-5ed0-4951-a549-c656583093ff}</SharePointProjectItemId>
+    </None>
+    <None Include="Products\sp-branding-webparts.sppkg" />
+    <None Include="SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{3292cd8b-de2e-42a8-ae17-b2a95e1e61d9}</SharePointProjectItemId>
+    </None>
+    <None Include="StoreData\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{6bf97fe1-daac-49fe-9855-4a00c2ef8a8d}</SharePointProjectItemId>
+    </None>
+    <None Include="StoreData\StoreDataInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{6a95f377-6726-4fe7-9fb3-df538c1906b9}</SharePointProjectItemId>
+    </None>
+    <None Include="Styles\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{838d7693-1669-4ed6-959b-b5370690da8f}</SharePointProjectItemId>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Package\Package.package">
+      <PackageId>{f1882ca9-2a57-452a-bfd5-72f44ba3ebc2}</PackageId>
+    </None>
+    <None Include="Package\Package.Template.xml">
+      <DependentUpon>Package.package</DependentUpon>
+    </None>
+    <None Include="Features\SPWebAdmin\SPWebAdmin.feature">
+      <FeatureId>{b8a61a60-e8a2-4ab3-95cb-9dc0523f947d}</FeatureId>
+    </None>
+    <None Include="Features\SPWebAdmin\SPWebAdmin.Template.xml">
+      <DependentUpon>SPWebAdmin.feature</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <AppManifestFile Include="AppManifest.xml">
+      <SubType>Designer</SubType>
+    </AppManifestFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources %28Host Web%29\Resources.resx">
+      <OpcRelationship>content-defaultresource</OpcRelationship>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources %28Host Web%29\Resources.en.resx">
+      <OpcRelationship>content-resource</OpcRelationship>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources %28Host Web%29\Resources.en-AU.resx">
+      <OpcRelationship>content-resource</OpcRelationship>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources %28Host Web%29\Resources.en-US.resx">
+      <OpcRelationship>content-resource</OpcRelationship>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+</Project>

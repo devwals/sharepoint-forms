@@ -1,0 +1,152 @@
+<div class="properties-modal">
+  <div class="modal-header">
+    {{view.elementItem.label}} Properties
+    <button class="close" aria-label="Close" (click)="cancel()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body container">
+    <nb-tabset #tabset>
+      <nb-tab id="tab-preventchange1" tabTitle="General" active>
+        <general-properties [model]="model" [itemProperties]="this.schema.properties"></general-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="Validation" *ngIf="this.schema.validation.length != 0 && 
+                      model.type != 'verticalline' && 
+                      model.type != 'horizontalline' &&
+                      model.type != 'link' &&
+                      model.type != 'tabs' &&
+                      model.key != 'Modified' && 
+                      model.key != 'Created' &&
+                      model.sptype != 'counter' &&
+                      model.field != 'Author' &&
+                      model.field != 'Editor'
+                      ">
+        <validation-properties [model]="model" [validationTypes]="this.schema.validation"></validation-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="Sharepoint" *ngIf="model.type != 'label' && 
+                                            model.type != 'image' && 
+                                            model.type != 'columns' &&
+                                            model.type != 'horizontalline' &&
+                                            model.type != 'verticalline' &&
+                                            model.type != 'tabs' &&
+                                            model.type != 'tab' &&
+                                            model.type != 'section' && 
+                                            model.type != 'nestedForm' && 
+                                            model.type != 'button' &&
+                                            model.type != 'attachment' && 
+                                            model.type != 'document'">
+        <sharepoint-properties [listData]="listData" [model]="model">
+        </sharepoint-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="{{model.name}}" *ngIf="model.type == 'dropdown'">
+        <dropdown-properties [model]="model"></dropdown-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="{{model.name}}" *ngIf="model.type == 'choice'">
+        <multi-choice-properties [model]="model" [listData]="listData"></multi-choice-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="{{model.name}}" *ngIf="model.type == 'horizontalline'">
+        <horizontal-line-properties [model]="model"></horizontal-line-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="{{model.name}}" *ngIf="model.type == 'yesno'">
+        <yes-no-properties [model]="model"></yes-no-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="{{model.name}}" *ngIf="model.type == 'textfield'">
+        <text-box-properties [model]="model"></text-box-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="{{model.name}}" *ngIf="model.type == 'date'">
+        <date-properties [model]="model"></date-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="{{model.name}}" *ngIf="model.type == 'label'">
+        <label-properties [model]="model"></label-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="{{model.name}}" *ngIf="model.type == 'datetime' && 
+                                                model.key=='Modified' && 
+                                                model.key=='Created'">
+        <date-time-properties [model]="model"></date-time-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="{{model.name}}" *ngIf="model.type == 'verticalline'">
+        <vertical-line-properties [model]="model"></vertical-line-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="{{model.name}}" *ngIf="model.type == 'user'">
+        <people-properties [model]="model"></people-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="{{model.name}}" *ngIf="model.type == 'lookup'">
+        <lookup-properties [model]="model"></lookup-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="{{model.name}}" *ngIf="model.type == 'managedmetadata'">
+        <managed-metadata-properties [model]="model"></managed-metadata-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="{{model.name}}" *ngIf="model.type == 'listlookup'">
+        <list-lookup-properties [model]="model"></list-lookup-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="{{model.name}}" *ngIf="model.type == 'image'">
+        <image-properties [model]="model"></image-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="{{model.name}}" *ngIf="model.type == 'link'">
+        <link-properties [model]="model"></link-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="{{model.name}}" *ngIf="model.type == 'number' && model.sptype != 'counter'">
+        <number-properties [model]="model"></number-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="{{model.name}}" *ngIf="model.type == 'textfieldmulti'">
+        <plain-text-multi-line-properties [model]="model"></plain-text-multi-line-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="{{model.name}}" *ngIf="model.type == 'richtext'">
+        <rich-text-properties [model]="model"></rich-text-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="{{model.name}}" *ngIf="model.type == 'button'">
+        <button-properties [model]="model"></button-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="{{model.name}}" *ngIf="model.type == 'section'">
+        <section-properties [model]="model"></section-properties>
+      </nb-tab>
+
+      <nb-tab tabTitle="{{model.name}}" *ngIf="model.type == 'nestedForm'">
+        <dw-nested-form-properties [model]="model"></dw-nested-form-properties>
+      </nb-tab>
+
+    </nb-tabset>
+
+    <div class="custom-control custom-checkbox">
+      <input class="custom-control-input" type="checkbox" [(ngModel)]="showModel" id="debug">
+      <label class="custom-control-label" for="debug">
+        DEBUG
+      </label>
+    </div>
+
+    <nb-card *ngIf="showModel">
+      <nb-card-body>
+        <div class="body-text">
+          <pre><code>{{ model | json }}</code></pre>
+        </div>
+      </nb-card-body>
+    </nb-card>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-md btn-primary btn-rectangle" (click)="updateObject()">Ok</button>
+      <button type="button" class="btn btn-md btn-secondary btn-rectangle" (click)="cancel()">Close</button>
+    </div>
+  </div>

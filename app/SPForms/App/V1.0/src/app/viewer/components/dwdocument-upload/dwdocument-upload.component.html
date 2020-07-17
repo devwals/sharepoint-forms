@@ -1,0 +1,9 @@
+<div class="document-file-container mb-1 card" *ngIf="document">
+  <a href="{{document.ServerRelativeUrl}}" target="_blank" class="card-header">
+    <i class="fa fa-file"></i> {{document.Name}}
+  </a>
+</div>
+<input type="file" [formControl]="formControl" class="form-control" [formlyAttributes]="field" 
+        [class.is-invalid]="showError"
+        (change)="onFileChanged($event)" *ngIf="!document"
+>

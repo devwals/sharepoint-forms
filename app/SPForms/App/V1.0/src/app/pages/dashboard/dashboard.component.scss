@@ -1,0 +1,10 @@
+.forms-table td, .forms-table th{
+    vertical-align: top !important;
+}
+
+.my-pagination /deep/ .ngx-pagination .current {
+    padding: 0.1875rem 0.625rem;
+    background: #9a91ff !important;
+    color: #fefefe;
+    cursor: default;
+}

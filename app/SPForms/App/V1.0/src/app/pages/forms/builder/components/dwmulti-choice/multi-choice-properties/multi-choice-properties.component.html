@@ -1,0 +1,144 @@
+<form #f="ngForm" class="formContainer">
+  <div class="row rowContainer">
+    <table class="table table-striped" >
+      <tbody>
+        <tr>
+          <th>Display Type</th>
+          <td>
+            <div class="custom-control custom-radio">
+              <input class="custom-control-input" type="radio" 
+                      [(ngModel)]="model.displayType" id="displayTypeRadio"
+                      value="Radio" name="displayType"
+              >
+                <label class="custom-control-label" for="displayTypeRadio">
+                  Radio
+                </label>
+            </div>
+          </td>
+          <td>
+            <div class="custom-control custom-radio">
+              <input class="custom-control-input" type="radio" 
+                      [(ngModel)]="model.displayType" id="displayTypeCheckbox"
+                      value="Checkbox" name="displayType"
+              >
+                <label class="custom-control-label" for="displayTypeCheckbox">
+                  Checkbox
+                </label>
+            </div>
+          </td>
+          <td>
+            <div class="custom-control custom-radio">
+              <input class="custom-control-input" type="radio" 
+                      [(ngModel)]="model.displayType" id="displayTypeDropdown"
+                      value="Dropdown" name="displayType"
+              >
+                <label class="custom-control-label" for="displayTypeDropdown">
+                  Dropdown
+                </label>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row rowContainer">
+    <div class="col-md-4">Option</div>
+    <div class="col-md-6"> 
+      <input class="form-control" type="text" placeholder="choice name" #input>
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-primary" (click)="addChoice(input.value)">Add</button>
+    </div>
+  </div>
+
+  <table class="table table-striped" >
+    <thead>
+      <tr>
+        <th scope="col">Options</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let choice of getChoicesValues(); let i = index">
+        <td>
+          {{ choice.label }}
+        </td>
+        <td>
+          <div class="row">
+            <button size="xsmall" type="button" class="btn btn-outline-secondary btn-ghost btn-icon"
+                    (click)="selectRow(choice)" nbPopover="Default Value" nbPopoverMode="hint"
+                    *ngIf="model.defaultValue != choice.label"
+            >
+              <i class="nb-play-outline"></i>
+            </button>
+
+            <button size="xsmall" type="button" class="btn btn-outline-secondary btn-ghost btn-icon"
+                    nbPopover="Default Value" nbPopoverMode="hint" *ngIf="model.defaultValue == choice.label"
+                    (click)="removeDefaultValue()"
+            >
+              <i class="nb-play"></i>
+            </button>
+
+            <button size="xsmall" type="button" class="btn btn-outline-secondary btn-ghost btn-icon"
+                    (click)="deleteRow(i)" nbPopover="Delete" nbPopoverMode="hint">
+              <i class="nb-trash"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+
+<div class="previewContainer">
+  <h4>Preview:</h4>
+  <div  style="border-style: dotted;">
+    <div class="row rowContainer">
+      <div class="col-md-4">
+        <label *ngIf="model.displayLabel">{{model.label}}<span *ngIf="model.validation?.required">*</span></label>
+      </div>
+      <div [ngClass]="model.displayLabel ? 'col-md-8' : 'col-md-11'">
+        <div *ngIf="model.displayType == 'Radio'">
+          <div class="custom-control custom-radio" *ngFor="let choice of getChoicesValues(); 
+                    let i = index;">
+            <input class="custom-control-input" type="radio" [value]="choice.value" 
+                    [attr.checked]="model.defaultValue == choice.value ? true : null"
+                    disabled
+            >
+              <label class="custom-control-label">
+              {{ choice.label }}
+              </label>
+          </div>
+        </div>
+        
+        <div *ngIf="model.displayType == 'Checkbox'">
+          <div class="custom-control custom-checkbox" *ngFor="let choice of getChoicesValues();">
+            <input class="custom-control-input" type="checkbox"
+                    [value]="choice.value"
+                    [attr.checked]="model.defaultValue == choice.value ? true : null" 
+                    disabled
+            >
+              <label class="custom-control-label">
+                {{ choice.label }}
+              </label>
+          </div>
+        </div>
+    
+        <div *ngIf="model.displayType == 'Dropdown'">
+          <select class="form-control">
+            <option *ngIf="!model.defaultValue" [attr.selected]="!model.defaultValue">{{ model.placeholder }}</option>
+            <option *ngFor="let choice of getChoicesValues();" 
+                    [value]="choice.value"
+                    [attr.selected]="model.defaultValue == choice.value ? true : null"
+                    disabled
+            >
+              {{ choice.label }}
+            </option>
+          </select>
+        </div>
+      <small class="form-text" >{{ model.helpBlock }}</small>
+      </div>
+    </div>
+  </div>
+</div>

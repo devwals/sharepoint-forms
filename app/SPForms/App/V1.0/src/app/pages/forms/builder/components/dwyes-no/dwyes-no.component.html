@@ -1,0 +1,55 @@
+<div class="shadow">
+  <div class="row">
+    <div class="col-md-12">
+      <button type="button" class="btn btn-dark btn-icon float-right" ngbTooltip="Delete" (click)="delete($event, model)">
+        <i class="fa fa-trash"></i>
+      </button>
+      <button type="button" class="btn btn-dark btn-icon float-right" ngbTooltip="Properties" (click)="edit($event, model)">
+        <i class="fa fa-edit"></i>
+      </button>
+    </div>
+  </div>
+  <div class="row" *ngIf="model.properties.displayType == 'radio'">
+    <div class="col-md-4" >
+      <label *ngIf="model.displayLabel">{{model.label}}<span *ngIf="model.validation?.required">*</span></label>
+    </div>
+    <div [ngClass]="model.displayLabel ? 'col-md-8' : 'col-md-11'">
+      <div class="custom-control custom-radio" *ngFor="let option of model.options; let i = index;">
+        <input class="custom-control-input" type="radio" [value]="option.value" 
+                [checked]="model.defaultValue == option.value" disabled
+        >
+          <label class="custom-control-label">
+            {{ option.label }}
+          </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rectangular switch -->
+  <div class="row" *ngIf="model.properties.displayType == 'switch rectangular'">
+    <div class="col-md-4 switchContainer">
+      <label *ngIf="model.displayLabel">{{model.label}}<span *ngIf="model.validation?.required">*</span></label>
+    </div>
+    <div [ngClass]="model.displayLabel ? 'col-md-8' : 'col-md-11'">
+      <label class="switch" > 
+        <input type="checkbox" [checked]="model.defaultValue" disabled>
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+  
+  <!-- Rounded switch -->
+  <div class="row" *ngIf="model.properties.displayType == 'switch rounded'">
+    <div class="col-md-4 switchContainer">
+      <label *ngIf="model.displayLabel">{{model.label}}<span *ngIf="model.validation?.required">*</span></label>
+    </div>
+    <div [ngClass]="model.displayLabel ? 'col-md-8' : 'col-md-11'">
+      <label class="switch" *ngIf="model.properties.displayType == 'switch rounded'">
+        <input type="checkbox" [checked]="model.defaultValue" disabled>
+        <span class="slider round"></span>
+      </label>
+    </div>
+  </div>
+  <small class="form-text" >{{model.helpBlock}}</small>
+</div>
+

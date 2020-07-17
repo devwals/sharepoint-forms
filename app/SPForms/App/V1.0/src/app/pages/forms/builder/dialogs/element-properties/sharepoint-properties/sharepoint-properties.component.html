@@ -1,0 +1,46 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Property</th>
+      <th scope="col">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">List</th>
+      <td>
+        <!--Disable this control until multiple list option is supported-->
+        <select [(ngModel)]="model.listId" class="form-control" (change)="onListChanged($event)" disabled>
+          <option value="">Select a list</option>
+          <option value="{{list.Id}}" *ngFor="let list of lists">
+            {{list.Title}}
+          </option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Field</th>
+      <td>
+        <loading *ngIf="loading" mode="small"></loading>
+        <div *ngIf="!loading">
+          <select class="form-control" [(ngModel)]="model.field" (change)="onFieldSelected()" *ngIf="!loading">
+            <option [value]="selectUndefinedOptionValue">
+              -- select a field --
+            </option>
+
+            <option disabled hidden *ngIf="message" [attr.selected]="message">
+              {{ message }}
+            </option>
+
+            <option *ngFor="let field of fields" [ngValue]="field.InternalName" [attr.selected]="model.field == field.InternalName ? true : null">
+              {{ field.InternalName }}
+            </option>
+          </select>
+          <small class="fieldInputMessage">
+            Selecting new field will reset the current field settings. Are you sure you want to select the new field?
+          </small>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

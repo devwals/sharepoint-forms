@@ -1,0 +1,14 @@
+<nb-tabset>
+  <nb-tab *ngFor="let item of fields; let index = index;" 
+          [tabTitle]="item.label" [active]="item.active" class="dw-tab"
+  >
+    <formly-form
+      [form]="tabForms[index]"
+      [model]="model"
+      [fields]="item.fields" 
+      [options]="options"
+    >
+    </formly-form>
+  </nb-tab>
+</nb-tabset>
+  

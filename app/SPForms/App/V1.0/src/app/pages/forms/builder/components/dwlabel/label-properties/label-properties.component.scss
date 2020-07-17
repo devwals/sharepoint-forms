@@ -1,0 +1,18 @@
+.colorInputBox {
+    height: 50px; 
+    width: 65px; 
+    padding: 8px;
+}
+
+.colorInputBox:hover, .inputBox:hover {
+    cursor: pointer;
+}
+
+.rowContainer {
+    line-height: 35px; 
+    padding: 10px 10px 0px 10px;
+}
+
+.previewContainer {
+    overflow-x: hidden;
+}

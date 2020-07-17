@@ -1,0 +1,24 @@
+.navbar{
+    border-bottom: 2px solid #dadfe6;
+
+    .navbar-nav{
+    margin:auto 0 auto auto;
+    flex-direction: row;
+    justify-content: flex-end;
+
+        .dwbtn-action{
+            font-size: 0.8rem;
+            padding: 2px;
+            margin: 2px;
+            i{
+                font-size:2.5rem;
+            }
+        }
+    }
+}
+
+.viewer-card {
+    min-height: 80vh;
+}
+
+

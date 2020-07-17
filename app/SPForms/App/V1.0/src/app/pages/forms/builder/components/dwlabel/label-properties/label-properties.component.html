@@ -1,0 +1,92 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Property</th>
+      <th scope="col">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Align</th>
+      <td>
+        <select class="form-control inputBox" [(ngModel)]="model.properties.align">
+          <option value="Left">Left</option>
+          <option value="Center">Center</option>
+          <option value="Right">Right</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Size (in px)</th>
+      <td>
+        <input type="number" [(ngModel)]="model.properties.size" class="form-control">
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Color</th>
+      <td>
+        <div>
+          <input type="color" [(ngModel)]="model.properties.color" class="form-control colorInputBox">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Font Weight</th>
+      <td>
+        <select class="form-control inputBox" [(ngModel)]="model.properties.fontWeight">
+          <option value="lighter">lighter</option>
+          <option value="100">lightest</option>
+          <option value="normal">normal</option>
+          <option value="bold">bold</option>
+          <option value="bolder">bolder</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Font Style</th>
+      <td>
+        <select class="form-control inputBox" [(ngModel)]="model.properties.fontStyle">
+            <option value="normal">normal</option>
+            <option value="italic">italic</option>
+            <option value="oblique">oblique</option>
+          </select>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Text Decoration</th>
+      <td>
+        <select class="form-control inputBox" [(ngModel)]="model.properties.textDecoration">
+          <option value="none">none</option>
+          <option value="overline">overline</option>
+          <option value="line-through">line-through</option>
+          <option value="underline">underline</option>
+          <option value="underline overline">underline overline</option>
+        </select>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="previewContainer">
+  <h4>Preview:</h4>
+  <div  style="border-style: dotted;">
+    <div class="row rowContainer">
+      <div class="col-md-12" [ngStyle]="{'text-align': model.properties.align === 'Center' ? 'center': 'left', 
+                                        'text-align': model.properties.align === 'Right' ? 'right' : 'center',
+                                        'text-align': model.properties.align === 'Left' ? 'left' : 'center'}">
+        <label *ngIf="model.displayLabel" 
+        [ngStyle]="{
+                    'color' : model.properties.color, 
+                    'font-size' : model.properties.size +'px',
+                    'font-weight': model.properties.fontWeight,
+                    'font-style': model.properties.fontStyle,
+                    'text-decoration': model.properties.textDecoration
+                  }"
+        >
+          {{ model.label }}
+          <span *ngIf="model.validation?.required">*</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

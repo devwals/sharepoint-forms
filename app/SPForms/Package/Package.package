@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="f1882ca9-2a57-452a-bfd5-72f44ba3ebc2" solutionId="f1882ca9-2a57-452a-bfd5-72f44ba3ebc2" resetWebServer="false" sharePointProductVersion="16.0" name="SPWebAdmin" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="b8a61a60-e8a2-4ab3-95cb-9dc0523f947d" />
+  </features>
+</package>

@@ -1,0 +1,25 @@
+@import '../../dwmulti-choice/dwmulti-choice.component.scss';
+
+.colorInputBox {
+    height: 50px; 
+    width: 65px; 
+    padding: 8px;
+}
+
+.colorInputBox:hover, .inputBox:hover {
+    cursor: pointer;
+}
+
+.vr {
+    position: relative;
+}
+
+.table {
+    overflow: hidden;
+}
+
+.propertyContainer {
+    overflow: hidden;
+}
+
+

@@ -1,0 +1,19 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Property</th>
+      <th scope="col">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Allow Multiple values</th>
+      <td>
+        <select class="form-control" [(ngModel)]="model.allowMultipleValues">
+          <option [ngValue]="true">true</option>
+          <option [ngValue]="false">false</option>
+        </select>
+      </td>
+    </tr>
+  </tbody>
+</table>

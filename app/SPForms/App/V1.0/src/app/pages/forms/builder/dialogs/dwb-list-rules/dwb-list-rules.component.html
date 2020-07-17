@@ -1,0 +1,86 @@
+<div class="modal-header">
+  List Query Rules
+  <button class="close" aria-label="Close" (click)="activeModal.close(false)">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body container">
+  <div class="body-text">
+
+    <div *ngIf="form.lists.length <= 1">
+      <div class="alert alert-info">
+        Only form with more than one list needs the query logic.
+        Add more fields with other lists in the form first to add logic for the lists.
+      </div>
+    </div>
+
+    <div *ngIf="form.lists.length > 1">
+
+      <div *ngFor="let list of form.lists;let i = index">
+
+        <div class="card border-light mb-3">
+          <div class="card-header">
+            {{list.title}}
+            <button type="button" class="btn btn-icon float-right" (click)="deleteCondition($event, i)" ngbTooltip="Toggle Query">
+              <i class="fas fa-toggle-on"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="card-body text-dark" *ngIf="i == 0">
+          First list gets loaded from the 'Id' Url parameter.
+        </div>
+
+        <div class="card-body text-dark" *ngIf="i > 0">
+
+          <div class="row">
+            <div class="col-md-3">
+              <select class="form-control" [(ngModel)]="list.query.rules[0].field">
+                <option value="">Select a field</option>
+                <option value="{{field.key}}" *ngFor="let field of getListFields(list.title)">{{field.label}}</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select class="form-control" [(ngModel)]="list.query.rules[0].operator">
+                <option value="=">=</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select class="form-control" [(ngModel)]="list.query.rules[0].entity">
+                <option value="">Select entity type</option>
+                <option value="{{l.title}}" *ngFor="let l of getOtherLists(list)">{{l.title}}</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <select class="form-control" [(ngModel)]="list.query.rules[0].value">
+                <option value="">Select a field</option>
+                <option value="{{field.key}}" *ngFor="let field of getListFields(list.query.rules[0].entity)">{{field.label}}</option>
+              </select>
+            </div>
+
+          </div>
+
+          <!-- <query-builder [data]="list.query" [config]="getEntityConfig(list)">
+
+            <ng-container *queryInput="let rule; type: 'textfield'">
+              <div class="dw-condition-control-container">
+                <input type="text" [(ngModel)]="rule.value" class="dw-condition-control" />
+              </div>
+            </ng-container>
+
+          </query-builder> -->
+        </div>
+      </div>
+
+    </div>
+
+    <div class="margin30">
+      <textarea>{{queries | json}}</textarea>
+    </div>
+
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-md btn-primary btn-rectangle" (click)="updateConditions($event)">Ok</button>
+  <button class="btn btn-md btn-secondary btn-rectangle" (click)="activeModal.close(false)">Close</button>
+</div>

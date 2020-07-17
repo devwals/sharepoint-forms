@@ -1,0 +1,67 @@
+<!-- <div class="row">
+    <div class="col-md-12"> -->
+<nb-card accent="success" class="w-100 viewer-card">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="navbar-collapse" id="navbarText">
+            <ul class="navbar-nav">
+                <li class="nav-item active" *ngIf="options.formState.disabled">
+                    <button type="button" class="btn btn-outline-secondary dwbtn-action" (click)="editPressed()">
+                        <div><i class="far fa-edit"></i></div> Edit
+                    </button>
+                    <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
+                </li>
+                <li class="nav-item active" *ngIf="!options.formState.disabled">
+                    <!-- <button type="button" class="btn btn-outline-secondary dwbtn-action" (click)="submit(model)"
+                                        [disabled]="!form.valid"
+                            > -->
+                    <button type="button" class="btn btn-outline-secondary dwbtn-action" (click)="this.vs.setFormAction('save');">
+                        <!-- <button type="button" class="btn btn-outline-secondary dwbtn-action" (click)="submit(model)"> -->
+                        <div><i class="far fa-save"></i></div> Save
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-outline-secondary dwbtn-action" (click)="print()">
+                        <div>
+                            <i class="fas fa-print"></i>
+                        </div> Print
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-outline-secondary dwbtn-action" (click)="back()">
+                        <div>
+                            <i class="fas fa-arrow-left"></i>
+                        </div> Back
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <nb-card-body>
+        <div *ngIf="formLoaded">
+            <form [formGroup]="form" (ngSubmit)="submit(model)">
+                <formly-form [form]="form" [fields]="fields" [model]="model" [options]="options">
+                </formly-form>
+            </form>
+        </div>
+
+    </nb-card-body>
+</nb-card>
+<!-- </div>
+</div> -->
+
+<!-- <div>
+   form status : {{ form.status }}
+</div>
+
+<div>
+    form valid : {{ form.valid }}
+</div> -->
+
+<!-- <div>
+    model : {{ model | json }}
+</div> -->
+<!-- 
+<div>
+    Form : {{ form.value | json }}
+</div> -->

@@ -1,0 +1,102 @@
+<div class="propertyContainer">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Property</th>
+        <th scope="col">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Height</th>
+        <td>
+          <input type="number" [(ngModel)]="model.properties.height" class="form-control">
+        </td>
+        <td>
+          <div class="container">
+            <label class="label">Pixels
+              <input type="radio" name="heightUnit" value="px" [(ngModel)]="model.properties.heightUnit" /> 
+              <span class="radio"></span>
+            </label>
+          </div>
+        </td>
+        <td>
+          <div class="row">
+            <div class="container">
+              <label class="label">Percentage
+                <input type="radio" name="heightUnit" value="%" [(ngModel)]="model.properties.heightUnit" /> 
+                <span class="radio"></span>
+              </label>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Width</th>
+        <td>
+          <input type="number" [(ngModel)]="model.properties.width" class="form-control">
+        </td>
+        <td>
+          <div class="container">
+            <label class="label">Pixels
+              <input type="radio" name="widthUnit" value="px" [(ngModel)]="model.properties.widthUnit" /> 
+              <span class="radio"></span>
+            </label>
+          </div>
+        </td>
+        <td>
+          <div class="row">
+            <div class="container">
+              <label class="label">Percentage
+                <input type="radio" name="widthUnit" value="%" [(ngModel)]="model.properties.widthUnit" /> 
+                <span class="radio"></span>
+              </label>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Line Type</th>
+        <td>
+          <select class="form-control inputBox" [(ngModel)]="model.properties.lineType">
+            <option value="solid">Solid</option>
+            <option value="dashed">Dashed</option>
+            <option value="dotted">Dotted</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <th scope="row">Color</th>
+        <td>
+          <div>
+            <input class="colorInputBox" type="color" [(ngModel)]="model.properties.color" class="form-control colorInputBox">
+          </div>
+        </td>
+        <td></td>
+        <td></td>
+      </tr>
+
+      
+    </tbody>
+  </table>
+
+  <div class="buttonContainer">
+    <h4>Preview:</h4>
+    <div class="border">
+      <div class="row">
+        <div class="col-md-12" [ngStyle]="{ 'text-align': model.align }">
+          <hr [ngStyle]="{
+                          'color' : model.properties.color, 
+                          'width' : model.properties.widthUnit === 'px' ? model.properties.width + 'px' : model.properties.width + '%',
+                          'height' : model.properties.heightUnit === 'px' ? model.properties.height + 'px' : model.properties.height + '%',
+                          'left': model.properties.align,
+                          'border-top': model.properties.lineType == 'dotted' ? 'dotted ' + model.properties.height + 'px' 
+                                      : model.properties.lineType + ' ' + model.properties.height + 'px'
+                        }"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

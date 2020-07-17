@@ -1,0 +1,24 @@
+
+<div class="modal-header">
+  Preview
+  <button class="close" aria-label="Close" (click)="cancel()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body container">
+  <loading *ngIf="loading"></loading>
+  <div *ngIf="!loading">
+    <formly-form [form]="form" [fields]="fields" [model]="model" >
+    </formly-form>
+  </div>
+  <!-- <div>
+    Form status : {{ form.status }}
+  </div> -->
+  <!-- <div>
+    Form : {{ form.value | json }}
+  </div> -->
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-md btn-secondary btn-rectangle" (click)="cancel()">Close</button>
+</div>  

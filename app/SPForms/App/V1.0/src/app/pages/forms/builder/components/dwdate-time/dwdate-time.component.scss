@@ -1,0 +1,28 @@
+.calendar {
+    cursor: pointer !important;
+}
+
+.btn-link {
+    display: none !important;
+}
+
+.timeBox {
+    display: flex;
+}
+
+.inputBox1 {
+    width: 60px;
+    margin: 10px 10px 10px 0px;
+}
+
+.inputBox2 {
+    width: 60px;
+    margin: 10px 0px 10px 10px;
+}
+
+.colon {
+    line-height: 65px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #ccc;
+}

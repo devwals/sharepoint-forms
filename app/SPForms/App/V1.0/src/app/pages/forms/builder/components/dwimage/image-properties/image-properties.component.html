@@ -1,0 +1,72 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Property</th>
+      <th scope="col">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Image Url</th>
+      <td>
+        <input type="text" [(ngModel)]="model.imageUrl" class="form-control">
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Align Image</th>
+      <td>
+        <select class="form-control inputBox" [(ngModel)]="model.alignment">
+          <option value="left">Left</option>
+          <option value="center">Center</option>
+          <option value="right">Right</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Height</th>
+      <td>
+        <input type="text" [(ngModel)]="model.height" class="form-control">
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Width</th>
+      <td>
+        <input type="text" [(ngModel)]="model.width" class="form-control">
+      </td>
+    </tr>
+
+    <tr>
+      <th scope="row">Unit</th>
+      <td>
+        <div class="container">
+          <label class="label">Percentage
+            <input type="radio" [(ngModel)]="model.percentage" class="form-control" name="percentage" [value]="true">
+            <span class="radio"></span>
+          </label>
+        </div>
+        
+        <div class="container">
+          <label class="label">Pixel
+            <input type="radio" [(ngModel)]="model.percentage" class="form-control" name="percentage" [value]="false">
+            <span class="radio"></span>
+          </label>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="imageContainer">
+  <h4>Preview:</h4>
+  <div class="border">
+    <div class="row rowContainer">
+      <div class="col-md-12" [ngStyle]="{ 'text-align': model.alignment }">
+        <img [src]="model.imageUrl" [style.height.%]="model.height" [style.width.%]="model.width" *ngIf="model.imageUrl && model.percentage">
+
+        <img [src]="model.imageUrl" [height]="model.height" [width]="model.width" *ngIf="model.imageUrl && !model.percentage">
+
+        <i class="fa fa-image icon" *ngIf="!model.imageUrl"></i>
+      </div>
+    </div>
+  </div>
+</div>

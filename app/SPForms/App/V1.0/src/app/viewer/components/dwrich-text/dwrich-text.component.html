@@ -1,0 +1,18 @@
+<tinymce type="text" [formControl]="formControl" class="form-control rich-text" 
+        [(ngModel)]="model[key]"
+        [placeholder]="field.templateOptions.originalFieldOptions.placeholder"
+        [formlyAttributes]="field" [class.is-invalid]="showError"
+        [required]="field.templateOptions.originalFieldOptions.required" 
+        [config]="config"
+></tinymce>
+
+<small class="form-text">{{  fieldOptions.helpBlock  }}</small>
+
+<small *ngIf="formControl.invalid && 
+                !formControl.value && 
+                formControl._pendingDirty" 
+        class="invalid-feedback text-danger" 
+        [style.display]="'block'"
+>
+        This field is required
+</small>

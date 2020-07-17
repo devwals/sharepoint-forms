@@ -1,0 +1,28 @@
+<div class="shadow dwtabs">
+  <div class="row">
+    <div class="col-md-8">
+    </div>
+    <div class="col-md-4">
+      <button type="button" class="btn btn-dark btn-icon float-right" ngbTooltip="Delete" (click)="delete(model)">
+        <i class="fa fa-trash"></i>
+      </button>
+      <button type="button" class="btn btn-dark btn-icon float-right" ngbTooltip="Properties" (click)="edit(model)">
+        <i class="fa fa-edit"></i>
+      </button>
+      <button type="button" class="btn btn-dark btn-icon float-right" ngbTooltip="Add a new Tab" (click)="add(model)">
+        <i class="fa fa-folder-plus"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <nb-tabset>
+        <nb-tab *ngFor="let item of model.children" [tabTitle]="item.label" [active]="item.active" class="dw-tab">
+          <dwtab-item [model]="item" [template]="template" (deleteRequest)="delete($event)" (editRequest)="edit($event)"
+            (logRequest)="log($event)"></dwtab-item>
+        </nb-tab>
+      </nb-tabset>
+    </div>
+  </div>
+</div>

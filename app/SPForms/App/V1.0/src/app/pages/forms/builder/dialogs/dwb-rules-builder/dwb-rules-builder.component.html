@@ -1,0 +1,116 @@
+<div class="modal-header">
+  Conditional Logic
+  <button class="close" aria-label="Close" (click)="activeModal.close(false)">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body container">
+  <div class="body-text">
+    <div class="mb-3 text-right">
+      <button type="button" class="btn btn-secondary btn-xs" (click)="addCondition($event)">
+        <i class="fa fa-plus"></i> Add
+        Condition</button>
+    </div>
+
+    <div *ngFor="let query of queries;let i = index">
+      <div class="card border-light mb-3">
+        <div class="card-header">
+          #{{i + 1}}
+          <button type="button" class="btn btn-icon float-right" (click)="deleteCondition($event, i)"
+            ngbTooltip="Remove condition">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="card-body text-dark">
+          <div class="mb-3">
+            <div class="mb-3">
+              <kbd>If: </kbd>
+            </div>
+            <query-builder [data]="query" [config]="entityConfig" [allowRuleset]='allowRuleset'>
+
+              <ng-container *queryInput="let rule; type: 'datetime'">
+                <div class="dw-condition-control-container">
+                  <input type="datetime-local" [(ngModel)]="rule.value" class="dw-condition-control" />
+                </div>
+              </ng-container>
+
+              <ng-container *queryInput="let rule; type: 'textfield'">
+                <div class="dw-condition-control-container">
+                  <input type="text" [(ngModel)]="rule.value" class="dw-condition-control" />
+                </div>
+              </ng-container>
+
+            </query-builder>
+          </div>
+          <div class="mb-3" *ngIf="query.rules.length > 0">
+            <div class="mb-3">
+              <kbd>Then: </kbd>
+            </div>
+            <div class="border p-2 row mr-1 ml-1">
+
+              <select [(ngModel)]="query.then.action" class="dw-condition-control col">
+                <option value="">Select action</option>
+                <option>Show</option>
+                <option>Hide</option>
+                <option>Enable</option>
+                <option>Disable</option>
+              </select>
+
+              <select *ngIf="query.then.action" [(ngModel)]="query.then.entity" class="dw-condition-control ml-3 col">
+                <option value="">Select entity type</option>
+                <option *ngFor="let list of form.lists">{{list.title}}</option>
+              </select>
+
+              <select *ngIf="query.then.entity && query.then.action" [(ngModel)]="query.then.field"
+                class="dw-condition-control ml-3 col">
+                <option value="">Select field</option>
+                <option value="{{field.key}}" *ngFor="let field of getFieldByEntity(query.then.entity)">
+                  {{field.label}}
+                </option>
+              </select>
+
+            </div>
+          </div>
+          <div class="mb-3" *ngIf="query.rules.length > 0">
+            <div class="mb-3">
+              <kbd>Else: </kbd>
+            </div>
+            <div class="border p-2 row mr-1 ml-1">
+              <select [(ngModel)]="query.else.action" class="dw-condition-control col">
+                <option value="">Select action</option>
+                <option>Show</option>
+                <option>Hide</option>
+                <option>Enable</option>
+                <option>Disable</option>
+              </select>
+
+              <select *ngIf="query.else.action" [(ngModel)]="query.else.entity" class="dw-condition-control ml-3 col">
+                <option value="">Select entity type</option>
+                <option *ngFor="let list of form.lists">{{list.title}}</option>
+              </select>
+
+              <select *ngIf="query.else.entity && query.else.action" [(ngModel)]="query.else.field"
+                class="dw-condition-control ml-3 col">
+                <option value="">None</option>
+                <option value="{{field.key}}" *ngFor="let field of getFieldByEntity(query.else.entity)">
+                  {{field.label}}
+                </option>
+              </select>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </div>
+
+    <div class="margin30">
+      <textarea>{{queries | json}}</textarea>
+    </div>
+
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-md btn-primary btn-rectangle" (click)="updateConditions($event)">Ok</button>
+  <button class="btn btn-md btn-secondary btn-rectangle" (click)="activeModal.close(false)">Close</button>
+</div>

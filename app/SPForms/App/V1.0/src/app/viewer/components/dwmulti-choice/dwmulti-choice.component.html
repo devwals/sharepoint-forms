@@ -1,0 +1,52 @@
+
+<div *ngIf="fieldOptions.displayType == 'Radio'">
+  <li class="listItem"  *ngFor="let choice of getChoices();">
+    <div class="container">
+      <label class="label">{{ choice }}
+        <input type="radio" [name]="id" [value]="choice" 
+                [disabled]="field.templateOptions.disabled || fieldOptions.disabled"
+                [required]="fieldOptions.validation?.required"
+                [checked]="getChecked(choice)" 
+                (change)="selectChoice($event,choice)"
+        /> 
+        <span class="radio"></span>
+      </label>
+    </div>
+  </li>
+</div>
+
+<div *ngIf="fieldOptions.displayType == 'Checkbox'">
+  <li class="listItem" *ngFor="let choice of getChoices();">
+    <div class="container">
+      <label class="label">{{ choice }} 
+        <input type="checkbox" [value]="choice" class="form-control" 
+                [disabled]="field.templateOptions.disabled || fieldOptions.disabled"
+                [checked]="getChecked(choice)" 
+                (change)="selectChoice($event,choice)"
+        /> 
+        <span class="checkmark"></span>
+      </label>
+    </div>
+  </li>
+</div>
+
+<div *ngIf="fieldOptions.displayType == 'Dropdown'">
+  <select class="form-control" [required]="fieldOptions.validation?.required" 
+          (change)="selectChoice($event,$event.target.value)">
+    <option *ngIf="!fieldOptions.defaultValue">{{ fieldOptions.placeholder }}</option>
+    <option *ngFor="let choice of getChoices();" 
+            [value]="choice"
+            [disabled]="field.templateOptions.disabled || fieldOptions.disabled"
+            [selected]="getChecked(choice)"
+    >
+      {{ choice }}
+    </option>
+  </select>
+</div>
+
+<small class="form-text" >{{ fieldOptions.helpBlock }}</small>
+
+<div> 
+  field.templateOptions.disabled : {{ field.templateOptions.disabled }}
+  fieldOptions.disabled : {{ fieldOptions.disabled }}
+</div>

@@ -1,0 +1,12 @@
+<select class="form-control" [required]="fieldOptions.validation?.required"
+        [formControl]="formControl" [formlyAttributes]="field" [class.is-invalid]="showError"
+>
+  <option *ngIf="!fieldOptions.defaultValue">{{ fieldOptions.placeholder }}</option>
+  <option *ngFor="let option of getOptions();" 
+          [value]="option"
+          [disabled]= "field.templateOptions.disabled"
+  >
+    {{ option }}
+  </option>
+</select>
+<small class="form-text" >{{ field.templateOptions.originalFieldOptions.helpBlock }}</small>

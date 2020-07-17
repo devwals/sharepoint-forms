@@ -1,0 +1,9 @@
+C:\VSTS\norbrik-intranet\app\nb.Intranet\nb.Intranet\bin\Debug\nb.Intranet.pdb
+C:\VSTS\norbrik-intranet\app\nb.Intranet\nb.Intranet\obj\Debug\nb.Intranet.dll
+C:\VSTS\norbrik-intranet\app\nb.Intranet\nb.Intranet\obj\Debug\nb.Intranet.pdb
+C:\Projects\MBranding\app\nb.Intranet\nb.Intranet\bin\Debug\nb.Intranet.pdb
+C:\Projects\MBranding\app\nb.Intranet\nb.Intranet\obj\Debug\nb.Intranet.dll
+C:\Projects\MBranding\app\nb.Intranet\nb.Intranet\obj\Debug\nb.Intranet.pdb
+C:\Bitbucket\mbranding\app\nb.Intranet\nb.Intranet\bin\Debug\nb.Intranet.pdb
+C:\Bitbucket\mbranding\app\nb.Intranet\nb.Intranet\obj\Debug\nb.Intranet.dll
+C:\Bitbucket\mbranding\app\nb.Intranet\nb.Intranet\obj\Debug\nb.Intranet.pdb

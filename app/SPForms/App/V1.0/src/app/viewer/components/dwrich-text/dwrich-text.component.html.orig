@@ -1,0 +1,23 @@
+<<<<<<< HEAD
+<tinymce type="text" [formControl]="formControl" class="form-control" 
+        [(ngModel)]="model[key]"
+        [placeholder]="field.templateOptions.originalFieldOptions.placeholder"
+        [formlyAttributes]="field" [class.is-invalid]="showError"
+        [required]="field.templateOptions.originalFieldOptions.required" 
+=======
+<tinymce type="text" [formControl]="formControl" class="form-control rich-text" 
+        [(ngModel)]="model[field.templateOptions.originalFieldOptions.field]"
+        [placeholder]="field.templateOptions.originalFieldOptions.placeholder"
+        [formlyAttributes]="field" [class.is-invalid]="showError"
+        [required]="field.templateOptions.originalFieldOptions.required"
+        [config]="config"
+>>>>>>> origin/abhi
+></tinymce>
+
+<small class="form-text">{{  fieldOptions.helpBlock  }}</small>
+
+<div *ngIf="formControl.invalid && !formControl.value && formControl._pendingDirty" class="invalid-feedback" 
+        [style.display]="'block'"
+>
+        This field is required.
+</div>

@@ -1,0 +1,15 @@
+.lookup-items-container {
+    .badge-pill {
+      .badge-text {
+        display: inline-block;
+        vertical-align: -webkit-baseline-middle;
+      }
+      button {
+        min-height: 0;
+        min-width: 0;
+      }
+      i {
+        font-size: 11px;
+      }
+    }
+  }

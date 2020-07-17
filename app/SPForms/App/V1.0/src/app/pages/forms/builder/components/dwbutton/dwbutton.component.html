@@ -1,0 +1,17 @@
+<div class="shadow dwButton">
+  <div class="row">
+    <div class="col-md-12">
+      <button type="button" class="btn btn-dark btn-icon float-right" ngbTooltip="Delete" (click)="delete(model)">
+        <i class="fa fa-trash"></i>
+      </button>
+      <button type="button" class="btn btn-dark btn-icon float-right" ngbTooltip="Properties" (click)="edit(model)">
+        <i class="fa fa-edit"></i>
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" [ngStyle]="{ 'text-align': model.align }">
+      <button type="button" [ngClass]="model.buttonClass" class="btn" [ngbTooltip]="model.tooltip">{{ model.label || model.name }}</button>
+    </div>
+  </div>
+</div>

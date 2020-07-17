@@ -1,0 +1,70 @@
+<div class="modal-header">
+  Edit Forms for {{view.list.Title}}
+  <button class="close" aria-label="Close" (click)="activeModal.close(false)">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body container">
+  <div class="body-text">
+    <div *ngFor="let contentType of view.forms.contentTypes">
+      <div *ngIf="!contentType.Sealed">
+        <h5>{{contentType.Name}}</h5>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Type</th>
+              <th scope="col">Form</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">
+                Display
+              </th>
+              <td>
+                  <select class="form-control" [(ngModel)]="contentType.DisplayFormUrl" aria-placeholder="Select a form"
+                  placeholder="Select a form">
+                  <option value="" selected>SharePoint Default</option>
+                  <option *ngFor="let form of view.listForms" value="{{form.formUrl}}">{{form.FileLeafRef}}</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                Edit
+              </th>
+              <td>
+                  <select class="form-control" [(ngModel)]="contentType.EditFormUrl" aria-placeholder="Select a form"
+                  placeholder="Select a form">
+                  <option value="" selected>SharePoint Default</option>
+                  <option *ngFor="let form of view.listForms" value="{{form.editFormUrl}}">{{form.FileLeafRef}}</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                New
+              </th>
+              <td>
+                  <select class="form-control" [(ngModel)]="contentType.NewFormUrl" aria-placeholder="Select a form"
+                  placeholder="Select a form">
+                  <option value="" selected>SharePoint Default</option>
+                  <option *ngFor="let form of view.listForms" value="{{form.newFormUrl}}">{{form.FileLeafRef}}</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <hr />
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-md btn-primary btn-rectangle"
+          (click)="save()"
+  >Save</button>
+  <button type="button" class="btn btn-md btn-secondary btn-rectangle" 
+          (click)="activeModal.close(false)"
+  >Close</button>
+</div>

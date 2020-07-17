@@ -1,0 +1,27 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Property</th>
+      <th scope="col">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">List</th>
+      <td>
+        <select #ddlList class="form-control" id="ddlList" [(ngModel)]="selectedList" (change)="onListSelected()">
+          <option *ngFor="let item of lists" [ngValue]="item">
+            {{ item.Title }}
+          </option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Description</th>
+      <td>
+        TODO: This should be rich text. Also same for the Section.
+        <textarea type="textarea" [(ngModel)]="model.description" class="form-control"></textarea>
+      </td>
+    </tr>
+  </tbody>
+</table>

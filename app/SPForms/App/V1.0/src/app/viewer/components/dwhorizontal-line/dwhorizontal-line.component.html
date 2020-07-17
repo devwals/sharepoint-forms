@@ -1,0 +1,11 @@
+<div class="row">
+  <hr [ngStyle]="{
+                    'color' : model.properties.color, 
+                    'width' : model.properties.widthUnit === 'px' ? model.properties.width + 'px' : model.properties.width + '%',
+                    'height' : model.properties.heightUnit === 'px' ? model.properties.height + 'px' : model.properties.height + '%',
+                    'left': model.properties.align,
+                    'border-top': model.properties.lineType == 'dotted' ? 'dotted ' + model.properties.height + 'px' 
+                                : model.properties.lineType + ' ' + model.properties.height + 'px'
+                  }"
+  >
+</div>

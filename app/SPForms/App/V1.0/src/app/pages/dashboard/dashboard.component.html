@@ -1,0 +1,98 @@
+<div class="row">
+  <div class="col-md-12">
+    <nb-card accent="success" class="w-100">
+      <nb-card-header>
+        Forms
+        <button type="button" class="btn btn-sm btn-primary float-right" 
+        routerLink="/pages/forms/create">
+          <i class="nb-plus"></i>
+          New Form
+        </button>
+      </nb-card-header>
+      <nb-card-body>
+        <div *ngIf="view.messages.success.length > 0" class="alert alert-success" role="alert">
+          <div *ngFor="let item of view.messages.success">{{item}}</div>
+        </div>
+        <loading *ngIf="view.loading"></loading>
+        <div *ngIf="view.forms.length == 0 && !view.loading" class="alert alert-primary" role="alert">
+          No forms found.
+          <a routerLink="/pages/forms/create" class="alert-link">Click here</a> to create a new form.
+        </div>
+        <div *ngIf="view.hasFormsList; else blockNoFormsList">
+          <div>
+            <div class="container">
+                <table class="table table-hover table-striped forms-table" *ngIf="view.forms.length > 0">
+                  <thead>
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th>List</th>
+                      <th scope="col">Created on</th>
+                      <th scope="col">Created by</th>
+                      <th scope="col">Modified on</th>
+                      <th scope="col">Modified by</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of view.forms | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
+                      <th scope="row">
+                        {{item.FileLeafRef}}
+                      </th>
+                      <td>{{item.RefName || "-"}}</td>
+                      <td>
+                        {{item.Created | date:"medium" }}
+                      </td>
+                      <td>
+                        {{item.Author.Title}}
+                      </td>
+                      <td>
+                        {{item.Modified | date:"medium" }}
+                      </td>
+                      <td>
+                        {{item.Editor.Title}}
+                      </td>
+                      <td>
+                        <button type="button" size="xsmall" type="button" class="btn btn-outline-secondary btn-icon float-left"
+                          (click)="previewForm(item)" nbPopover="Preview" nbPopoverMode="hint">
+                          <i class="nb-play-outline"></i>
+                        </button>
+                        <button size="xsmall" type="button" class="btn btn-outline-secondary btn-icon float-left"
+                          (click)="editForm(item)" nbPopover="Edit" nbPopoverMode="hint">
+                          <i class="nb-compose"></i>
+                        </button>
+                        <button size="xsmall" type="button" class="btn btn-outline-secondary btn-ghost btn-icon"
+                          (click)="deleteForm(item)" nbPopover="Delete" nbPopoverMode="hint">
+                          <i class="nb-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              <div class="text-center">
+                <pagination-controls class="my-pagination" (pageChange)="currentPage = $event"></pagination-controls>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <ng-template #blockNoFormsList>
+          <p>
+            Thank you for downloading our Forms Builder for SharePoint.
+            You are one more click away from finishing the installation.
+            Click the <strong>Install</strong> button below to complete the installation and start building forms.
+          </p>
+          <p>
+            A library will be created in the host web to store Forms. This application does not use third party
+            storage.
+          </p>
+          <div class="alert alert-danger" role="alert">
+            Your will need permission to create lists &amp; libraries to install this product!
+          </div>
+          <button type="button" *ngIf="view.install == null || view.install == undefined" class="btn btn-primary"
+            (click)="deploy($event)">Install</button>
+          <samp>{{view.install?.message}}</samp>
+        </ng-template>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

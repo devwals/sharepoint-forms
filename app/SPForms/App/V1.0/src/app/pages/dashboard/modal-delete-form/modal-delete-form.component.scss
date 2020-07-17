@@ -1,0 +1,28 @@
+.sub-title {
+    color: gray;
+}
+
+.nb-alert {
+    font-size: 100px;
+    display: inherit;
+    color: #ff4c6a;
+}
+
+span {
+    font-family: Exo;
+    font-size: 1rem ;
+    margin-left: 20px; 
+    padding-top: 40px;  
+}
+
+.btn-group {
+    margin-right: 4px;
+}
+
+.btn:hover {
+    cursor: pointer !important;
+}
+
+.container {
+    display: flex !important;
+}

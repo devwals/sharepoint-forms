@@ -1,0 +1,13 @@
+<div class="row buttonContainer">
+  <div class="col-md-12" [ngStyle]="{ 'text-align': fieldOptions.align }">
+    <button [type]="field.type" [ngClass]="fieldOptions.buttonClass" 
+            class="btn" [ngbTooltip]="fieldOptions.tooltip ? 
+                                      fieldOptions.tooltip 
+                                      : ''"
+            (click)="buttonPressed()"
+            [disabled]="validForm && !formEnabled"
+    >
+      {{ field.key }}
+    </button>  
+  </div>
+</div>

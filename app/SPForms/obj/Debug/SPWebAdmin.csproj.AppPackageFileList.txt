@@ -1,0 +1,1 @@
+C:\Bitbucket\sp-web-admin\app\SPWebAdmin\SPWebAdmin\bin\Debug\app.publish\1.0.0.0\SPWebAdmin.app

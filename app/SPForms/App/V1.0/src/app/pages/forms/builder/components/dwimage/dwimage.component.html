@@ -1,0 +1,21 @@
+<div class="shadow">
+  <div class="row">
+    <div class="col-md-12">
+      <button type="button" class="btn btn-dark btn-icon float-right" ngbTooltip="Delete" (click)="delete($event, model)">
+        <i class="fa fa-trash"></i>
+      </button>
+      <button type="button" class="btn btn-dark btn-icon float-right" ngbTooltip="Properties" (click)="edit($event, model)">
+        <i class="fa fa-edit"></i>
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" [ngStyle]="{ 'text-align': model.alignment }" style="width: 100%;">
+      <img [src]="model.imageUrl" [style.height.%]="model.height" [style.width.%]="model.width" *ngIf="model.imageUrl && model.percentage">
+
+      <img [src]="model.imageUrl" [height]="model.height" [width]="model.width" *ngIf="model.imageUrl && !model.percentage">
+
+      <i class="fa fa-image icon" *ngIf="!model.imageUrl" ></i>
+    </div>
+  </div>
+</div>
