@@ -60,7 +60,7 @@
     "@swimlane/ngx-dnd": "^6.0.0",
     "@types/dragula": "^2.1.34",
     "angular2-query-builder": "^0.4.0",
-    "bootstrap": "4.0.0",
+    "bootstrap": "4.3.1",
     "classlist.js": "1.1.20150312",
     "core-js": "2.5.1",
     "es6-promise": "^4.2.5",
